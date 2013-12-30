@@ -86,6 +86,9 @@ var touch = touch || {};
 			var nextSibling = domTreeOpDiv.nextSibling;
 			parentNode.removeChild(domTreeOpDiv);
 			parentNode.insertBefore(domTreeOpDiv, nextSibling);
+		},
+		simpleClone: function(obj){
+			return JSON.parse(JSON.stringify(obj));
 		}
 	};
 
@@ -320,6 +323,8 @@ var touch = touch || {};
 		SWIPE: 'swipe',
 
 		DRAG: 'drag',
+		DRAGSTART : 'dragstart',
+		DRAGEND : 'dragend',
 
 		//HOLD AND TAP  
 		HOLD: 'hold',
@@ -522,7 +527,7 @@ var touch = touch || {};
 				_trigger(el, smrEventList.PINCH, eventObj);
 
 				if (Math.abs(1 - scale) > config.minScaleRate) {
-					var scaleEv = _utils.deepCopy(eventObj);
+					var scaleEv = utils.simpleClone(eventObj);
 
 					//手势放大, 触发pinchout事件
 					var scale_diff = 0.00000000001; //防止touchend的scale与__scale_last_rate相等，不触发事件的情况。
@@ -541,7 +546,7 @@ var touch = touch || {};
 				}
 
 				if (Math.abs(rotation) > config.minRotationAngle) {
-					var rotationEv = _utils.deepCopy(eventObj), eventType;
+					var rotationEv = utils.simpleClone(eventObj), eventType;
 
 					eventType = rotation > 0 ? smrEventList.ROTATION_RIGHT: smrEventList.ROTATION_LEFT;
 					_trigger(el, eventType, rotationEv, false);
@@ -665,12 +670,15 @@ var touch = touch || {};
 				if (!startDrag) {
 					eventObj.fingerStatus = eventObj.swipe = 'start';
 					startDrag = true;
+					_trigger(el, smrEventList.DRAGSTART, eventObj);
 				} else if (isTouchMove(ev)) {
 					eventObj.fingerStatus = eventObj.swipe = 'move';
+					_trigger(el, smrEventList.DRAG, eventObj);
 				} else if (isTouchEnd(ev)) {
 					eventObj.fingerStatus = eventObj.swipe = 'end';
+					_trigger(el, smrEventList.DRAGEND, eventObj);
 				}
-				_trigger(el, smrEventList.DRAG, eventObj);
+				
 			}
 		},
 		tap: function(ev) {

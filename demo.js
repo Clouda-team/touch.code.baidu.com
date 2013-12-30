@@ -270,7 +270,8 @@ touch.on('#pannels', 'tap', function(ev){
         ////ev.originEvent.stopPropagation();
     });
     var initial = 0;
-    touch.live('#drag .target', 'drag', {interval: 10}, function(ev){
+    touch.live('#drag .target', 'drag dragstart dragend', {interval: 10}, function(ev){
+		console.log(ev)
         var d = initial + ev.distanceX;
         
         if(ev.fingerStatus === 'end'){

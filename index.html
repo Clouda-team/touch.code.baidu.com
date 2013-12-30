@@ -1,633 +1,923 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>百度云手势事件库 Baidu Cloud Event & Gesture Libraryz</title>
+        <title>
+            百度云手势事件库 Baidu Cloud Event & Gesture Libraryz
+        </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="Keywords" content="百度云手势事件库, touch, touch library, baidu cloud gesture event library, javascript, html5, transform, pinch, scale,tap" />
-        <meta name="Description" content="百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。"/>
-        <meta content="target-densitydpi=high-dpi,width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0" name="viewport" />
-        <!---meta content="minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport"/-->
-        <meta name="apple-mobile-web-app-capable" content="yes" /> 
-        <link href="images/favicon.ico" rel="shortcut icon" type="images/x-icon"></link>       
-        <link href="demo.css" rel="stylesheet"></link> 
+        <meta name="Keywords" content="百度云手势事件库, touch, touch library, baidu cloud gesture event library, javascript, html5, transform, pinch, scale,tap"
+        />
+        <meta name="Description" content="百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。"
+        />
+        <meta content="target-densitydpi=high-dpi,width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0"
+        name="viewport" />
+        <!---meta content="minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport"/-->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link href="images/favicon.ico" rel="shortcut icon" type="images/x-icon">
+        </link>
+        <link href="demo.css" rel="stylesheet">
+        </link>
     </head>
-<body>
-  <div id="pc" class="main">
-     <div id="d-header" class="header">
-         <div class="logo">
-            <p>手势事件库 Baidu Cloud Event & Gesture Library</p>
-         </div>
-         <div class="banner">
-            <div class="desc">
-                  <p>百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。</p>
-                  <p style="padding-top:8px">是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。</p>
-                <ul>
-                  <li> 无侵入设计， 可与现有代码与框架共存</li>
-                  <li> 原生、出色的加速度感知与缓动效果</li>
-                  <li> 体验更好的单指旋转手势</li>
-                  <li> 支持iPhone,Android或Chrome等webkit浏览器</li>
-                </ul>
-            </div>
-            
-            <div class="b-r">
-                <p>如何获取源码？</p>
-                <ul>
-                  <li>
-                  <span style="padding-right:32px;">方法一： 下载源码</span> 
-                  <a class="download" href="http://code.baidu.com/touch-0.2.9.js" target="_blank">立即下载</a></li>
-                  <li>
-                     <span>方法二： 极速CDN</span>
-                     <div style="margin-top: 14px">
-                       <input id="cdn-text" type="text" value='<script type="text/javascript" src="http://code.baidu.com/touch-0.2.9.js"></script>'></input>
-                       <input id="cdn-btn" type="button" value="复制"></input>
-                     </div>
-                  </li>
-                </ul>
-            </div>
-         </div>
-     </div>
-     <div id="navigation" style="margin-top: 1px;margin-bottom: 1px;">
-        <ul class="g-nav">
-           <li id="nav-cur" name="n1">DEMO</li>
-           <li name="n2">API</li>
-           <li name="n3">更新记录</li>
-        </ul>
-     </div>
-     <div id="doc" style="display:none">
-            <!--ul class="doc-nav">
-               <li><a class="nav-item i2 cur">API详细描述</a></li>
-               <li><a class="nav-item i1">更新记录</a></li>
-            </ul-->
-            <div id="changelog" class="changelog" style="display: none">
-				<div class="version api-item">
-                  <h4 class="setion-title">v0.2.9  更新日期： 2013-12-04</h4>
-                  <div class="entry-wrapper">
-                      <p> 修复touch.off接口</p>
-                  </div>
+    
+    <body>
+        <div id="pc" class="main">
+            <div id="d-header" class="header">
+                <div class="logo">
+                    <p>
+                        手势事件库 Baidu Cloud Event & Gesture Library
+                    </p>
                 </div>
-                <div class="version api-item">
-                  <h4 class="setion-title">v0.2.8  更新日期： 2013-11-29</h4>
-                  <div class="entry-wrapper">
-                      <p> 事件兼容性升级</p>
-                  </div>
-                </div>
-                <div class="version api-item">
-                  <h4 class="setion-title">v0.2.7  更新日期： 2013-11-26</h4>
-                  <div class="entry-wrapper">
-                      <p> 添加事件代理机制</p>
-                      <p> 添加自定义事件支持</p>
-                      <p> 添加trigger方法</p>
-                      <p> 支持事件冒泡</p>
-                  </div>
-                </div>
-                <div class="version api-item">
-                  <h4 class="setion-title">v0.2.6  更新日期： 2013-07-09</h4>
-                  <div class="entry-wrapper">
-                      <p> 修正了在iOS5设备上scale操作在特定情况下报错的问题</p>
-                      
-                  </div>
-                </div>
-                <div class="version api-item">
-                  <h4 class="setion-title">v0.2.4  更新日期： 2013-07-01</h4>
-                  <div class="entry-wrapper">
-                      <p> 修复了在iOS4系统下的文本节点会点击无效的情况</p>
-                      
-                  </div>
-              </div>
-              <div class="version api-item">
-                  <h4 class="setion-title">v0.2.2  更新日期： 2013-01-17</h4>
-                  <div class="entry-wrapper">
-                      <p> 增加了live绑定事件接口</p>
-                      <p> 解决了在有设置采样频率情况下， 有些处理函数失效问题。</p>
-                      <p> 修改了mouseup事件不能正常绑定的问题</p>
-                      <p> touch.off接口支持接受元素对象参数</p>
-                  </div>
-              </div>
-              <div class="version api-item">
-                  <h4 class="setion-title">v0.2.1  更新日期： 2013-01-14</h4>
-                  <div class="entry-wrapper">
-                      <p> 增加drag事件名</p>
-                      <p> 修改swipe开关不可用的问题</p>
-                      <p> 修改了rotation角度在pc浏览器下不连续的问题</p>
-                  </div>
-              </div>
-              <div class="version api-item">
-                  <h4 class="setion-title">v0.2.0  更新日期： 2013-01-11</h4>
-                  <div class="entry-wrapper">
-                      <p> 增加了采样频率：interval</p>
-                      <p> 更新on传递options（可选）参数的方式</p>
-                  </div>
-              </div>
-            </div>
-            <div id="docapi" class="doc-api">
-                
-                
-
-
-
-
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        <span style="color:red">Note：</span> 与0.2.6及之前的touch.js兼容
-                    </h4>
-                    <div class="entry-wrapper">
-                        <p class="second">
-                        <strong>兼容原因</strong>
-                        <br />
-                        0.2.6及之前的touch.js不支持事件代理机制，而新的touch.js通过手势识别，事件冒泡及原生的事件对象，提供事件代理机制和自定义事件的能力，从而极大提升性能。原有的stopPropagation会阻止原生事件冒泡，从而使手势识别失效，因此，需要手动删除/注释stopPropagation语句。麻烦各位根据自己项目的实际情况，选择性升级touch.js。</p>
-                        <p class="second">
-                        <br />
-                        <strong>兼容方法</strong>
-                        <br />
-                        删除/注释所有绑定中的stopPropagation方法
-                        <pre>
-touch.on('#rotation .target', 'touchstart', function(ev){
-    ev.startRotate();
-    ev.originEvent.preventDefault();
-    //ev.originEvent.stopPropagation();      //注释掉或者删掉stopPropagation方法
-});
-                        </pre>
-                        
+                <div class="banner">
+                    <div class="desc">
+                        <p>
+                            百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。
                         </p>
-                    </div>
-                </div>
-                
-               <div class="api-item">
-                  <h4 class="setion-title">
-                     touch.config(config)
-                  </h4>
-                  <div class="entry-wrapper">
-                     <p class="second">
-                        <strong>Description</strong>:
-                        对百度云手势事件库进行全局配置。
-                     </p>
-                     <strong>参数描述:</strong>
-                     <p>config为一个对象：
-<pre class="second">
-
-{
-    tap: true,                  //tap类事件开关, 默认为true
-    doubleTap: true,            //doubleTap事件开关， 默认为true
-    hold: true,                 //hold事件开关, 默认为true
-    holdTime: 650,              //hold时间长度
-    swipe: true,                //swipe事件开关
-    swipeTime: 300,             //触发swipe事件的最大时长
-    swipeMinDistance: 18,       //swipe移动最小距离
-    swipeFactor: 5,             //加速因子, 值越大变化速率越快 
-    drag: true,                 //drag事件开关
-    pinch: true,                //pinch类事件开关
-}
-
-</pre>
-                     </p>
-                  </div>
-                </div>
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        touch.on( delegateElement, types, selector, callback );
-                    </h4>
-                    <div class="entry-wrapper">
-                        <p class="second"><strong>Description</strong>:事件代理方法。</p>
-                        <strong>参数描述:</strong>
-                        <p><b>delegateElement</b> <i>{String} or {Element}</i> :  事件代理元素或选择器。</p>
-                        <p><b>types</b> <i>{String}</i> :  事件的类型, 可接受多个事件以空格分开。支持原生事件的透传:</p>
-                        <p><b>selector</b> <i>{String}</i> :  代理子元素选择器。</p>
-                        <p><b>callback</b> <i>{Function}</i> :  事件处理函数</p>
-                    </div>
-                </div>
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        touch.on( element, types, callback );
-                    </h4>
-                    <div class="entry-wrapper">
-                        <p class="second"><strong>Description</strong>:事件绑定方法，根据参数区分事件绑定和事件代理。</p>
-                        <strong>参数描述:</strong>
-                        <p><b>element</b> <i>{String} or {Element}</i> :  事件绑定元素或选择器。</p>
-                        <p><b>types</b> <i>{String}</i> :  事件的类型, 可接受多个事件以空格分开。支持原生事件的透传:</p>
-                        <p><b>callback</b> <i>{Function}</i> :  事件处理函数</p>
-                    </div>
-                </div>
-                <div class="api-item">
-                    <h4 class="setion-title">
-                     touch.off( delegateElement, types, selector, callback )
-                    </h4>
-                    <div class="entry-wrapper">
-                        <p class="second">
-                        <strong>Description</strong>:
-                        解除某元素上的事件代理。
+                        <p style="padding-top:8px">
+                            是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。
                         </p>
-                        <strong>参数描述:</strong>
-                        <p><b>delegateElement</b> <i>{String} or {Element}</i> : 元素对象或选择器。</p>
-                        <p><b>types</b> <i>{String}</i> : 事件的类型。</p>
-                        <p><b>selector</b> <i>{String}</i> :  代理子元素选择器。</p>
-                        <p><b>callback</b> <i>{Function}</i> : 事件处理函数, 移除函数与绑定函数必须为同一引用。</p>
+                        <ul>
+                            <li>
+                                无侵入设计， 可与现有代码与框架共存
+                            </li>
+                            <li>
+                                原生、出色的加速度感知与缓动效果
+                            </li>
+                            <li>
+                                体验更好的单指旋转手势
+                            </li>
+                            <li>
+                                支持iPhone,Android或Chrome等webkit浏览器
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="api-item">
-                  <h4 class="setion-title">
-                     touch.off( element, types, callback )
-                  </h4>
-                  <div class="entry-wrapper">
-                     <p class="second">
-                        <strong>Description</strong>:
-                        解除某元素上的事件绑定，根据参数区分事件绑定和事件代理。
-                     </p>
-                     <strong>参数描述:</strong>
-                     <p><b>element</b> <i>{String} or {Element}</i> : 元素对象、选择器。</p>
-                     <p><b>types</b> <i>{String}</i> : 事件的类型。</p>
-                     <p><b>callback</b> <i>{Function}</i> : 事件处理函数, 移除函数与绑定函数必须为同一引用。</p>
-                  </div>
-                </div>
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        touch.trigger(element, type);
-                    </h4>
-                    <div class="entry-wrapper">
-                        <p class="second">
-                            <strong>Description</strong>:
-                            触发某个元素上的某事件。
+                    <div class="b-r">
+                        <p>
+                            如何获取源码？
                         </p>
-                        <strong>参数描述:</strong>
-                        <p><b>element</b> <i>{String} or {Element}</i> : 元素对象或选择器。</p>
-                        <p><b>type</b> <i>{String}</i>: 事件的类型。</p>
-                    </div>
-                </div>
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        支持的手势事件
-                    </h4>
-                    <div class="entry-wrapper">
-                        <ul style="list-style-type: disc;">
-                            <li>pinchstart</li>
-                            <li>pinchend</li>
-                            <li>pinch</li>
-                            <li>pinchin</li>
-                            <li>pinchout</li>
-                            <li>rotateleft</li>
-                            <li>rotateright</li>
-                            <li>rotate</li>
-                            <li>swipestart</li>
-                            <li>swiping</li>
-                            <li>swipeend</li>
-                            <li>swipeleft</li>
-                            <li>swiperight</li>
-                            <li>swipeup</li>
-                            <li>swipedown</li>
-                            <li>swipe</li>
-                            <li>drag</li>
-                            <li>hold</li>
-                            <li>tap</li>
-                            <li>doubletap</li>
+                        <ul>
+                            <li>
+                                <span style="padding-right:32px;">
+                                    方法一： 下载源码
+                                </span>
+                                <a class="download" href="http://code.baidu.com/touch-0.2.9.js" target="_blank">
+                                    立即下载
+                                </a>
+                            </li>
+                            <li>
+                                <span>
+                                    方法二： 极速CDN
+                                </span>
+                                <div style="margin-top: 14px">
+                                    <input id="cdn-text" type="text" value='<script type="text/javascript" src="http://code.baidu.com/touch-0.2.9.js"></script>'>
+                                    </input>
+                                    <input id="cdn-btn" type="button" value="复制">
+                                    </input>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        事件对象自定义属性
-                    </h4>
-                    <div class="entry-wrapper">
-                        <p class="second">
-                            <strong>Description</strong>:
-                            <br />
-                            事件处理函数的第一个参数为事件对象，touch.js扩充了事件对象，以下为为手势新增的属性。
-                        </p>
-                        <br />
-						<pre>
-originEvent   //触发某事件的原生对象.
-type               //事件的名称
-rotation        //旋转角度
-scale             //缩放比例
-direction         //操作的方向属性
-fingersCount  //操作的手势数量
-position        //相关位置信息, 不同的操作产生不同的位置信息
-distance        //swipe类两点之间的位移
-distanceX       //swipe类事件x方向的位移
-distanceY       //swipe类事件y方向的位移
-angle              //swipe类事件触发时偏移角度
-duration          //touchstart 与 touchend之间的时间戳
-factor              //swipe事件加速度因子
-startRotate    //启动单指旋转方法，在某个元素的touchstart触发时调用。
-						</pre>
-                        
+            </div>
+            <div id="navigation" style="margin-top: 1px;margin-bottom: 1px;">
+                <ul class="g-nav">
+                    <li id="nav-cur" name="n1">
+                        DEMO
+                    </li>
+                    <li name="n2">
+                        API
+                    </li>
+                    <li name="n3">
+                        更新记录
+                    </li>
+                </ul>
+            </div>
+            <div id="doc" style="display:none">
+                <!--ul class="doc-nav">
+                <li><a class="nav-item i2 cur">API详细描述</a></li>
+                <li><a class="nav-item i1">更新记录</a></li>
+                </ul-->
+                <div id="changelog" class="changelog" style="display: none">
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.9 更新日期： 2013-12-04
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                修复touch.off接口
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.8 更新日期： 2013-11-29
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                事件兼容性升级
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.7 更新日期： 2013-11-26
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                添加事件代理机制
+                            </p>
+                            <p>
+                                添加自定义事件支持
+                            </p>
+                            <p>
+                                添加trigger方法
+                            </p>
+                            <p>
+                                支持事件冒泡
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.6 更新日期： 2013-07-09
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                修正了在iOS5设备上scale操作在特定情况下报错的问题
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.4 更新日期： 2013-07-01
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                修复了在iOS4系统下的文本节点会点击无效的情况
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.2 更新日期： 2013-01-17
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                增加了live绑定事件接口
+                            </p>
+                            <p>
+                                解决了在有设置采样频率情况下， 有些处理函数失效问题。
+                            </p>
+                            <p>
+                                修改了mouseup事件不能正常绑定的问题
+                            </p>
+                            <p>
+                                touch.off接口支持接受元素对象参数
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.1 更新日期： 2013-01-14
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                增加drag事件名
+                            </p>
+                            <p>
+                                修改swipe开关不可用的问题
+                            </p>
+                            <p>
+                                修改了rotation角度在pc浏览器下不连续的问题
+                            </p>
+                        </div>
+                    </div>
+                    <div class="version api-item">
+                        <h4 class="setion-title">
+                            v0.2.0 更新日期： 2013-01-11
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p>
+                                增加了采样频率：interval
+                            </p>
+                            <p>
+                                更新on传递options（可选）参数的方式
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="api-item">
-                    <h4 class="setion-title">
-                        <strong>已知问题</strong>
-                    </h4>
-                <div class="entry-wrapper">
-<pre>
- 在Android 2.3默认浏览器中， touchmove不会连续触发， 解决该问题的方法可以再touchstart中禁止默认行为。
-   
-   示例代码：
-   touch.on(el, 'touchstart', function(ev){
-      ev.originEvent.preventDefault();
-   }, false);
-   touch.on(el, 'touchmove', function(ev){
-      console.log('moving...');
-   });
-   
- 在页面中设置viewport为maximum-scale=1.0 或 user-scalable=no 参数会导致touchmove事件不会触发, 该问题产生于Android4.1.1默认浏览器中。
-</pre>
-</div>
-</div>
-            </div>
-        </div>
-     <div id="content" class="content">
-        <div id="pointer-list" class="left">
-            <ul>
-               <!--li class="doc" name="doc">Document<span/></li-->
-               <li id="hover" class="rotation" name="rotation">Rotation<span/></li>
-               <li class="scale" name="scale">Scale<span/></li>
-               <li class="tap" name="tap">Tap&Hold<span/></li>
-               <li class="swipe" name="swipe">Swipe<span/></li>
-               <li class="drag" name="drag">Drag<span/></li>
-               <li class="touch" name="touch">Touch<span/></li>
-            </ul>
-            <img class="qr" src="images/qr.png"></img>
-            <div class="contact">
-                <h4>联系我们：</h4>
-                <a>code-feedback@baidu.com</a>
-            </div>
-        </div>
-        
-        <div id="pannels" class="right">
-            <div id="console"></div>
-            <div id="rotation" class="demo" name="cur">
-               <div class="target"></div>
-               
-               <div class="api-desc">
-                 <a class="title1 selected">API</a>
-                 <a class="title2"> Sample Code</a>
-                 <ul class="tabs">
-                  <li class="tab t1">
-<pre>
-touch.on('#rotation .target', 'rotate', function(ev){});
-参数1： 元素选择器
-参数2： 事件名称rotate。
-参数3： 事件处理函数。
-</pre>               
-                  </li>
-                  <li style="display:none" class="tab t2">
-<pre>
-  var angle = 30;
-  touch.on('#rotation .target', 'touchstart', function(ev){
-    ev.startRotate();
-    ev.originEvent.preventDefault();
-  });
-  touch.on('#rotation .target', 'rotate', function(ev){
-    var totalAngle = angle + ev.rotation;
-    if(ev.fingerStatus === 'end'){
-      angle = angle + ev.rotation;
-    } 
-    
-    this.style.webkitTransform = 'rotate(' + totalAngle + 'deg)';
-  });
-</pre>
-                  </li>
-                 </ul>
-               </div>
-               <div class="description">
-                  <p>双指按住旋转， 并启动单指旋转。</p>
-               </div>
-            </div>
-            <div id="scale" class="demo" >
-               <div class="target"></div>
-                 <div class="api-desc">
-                 <a class="title1 selected">API</a>
-                 <a class="title2"> Sample Code</a>
-                 <ul class="tabs">
-                  <li class="tab t1">
-<pre>
-touch.on('#scale .target', 'pinch', function(ev){});
-参数1： 元素选择器
-参数2： 事件名称pinch。
-参数3： 事件处理函数
-
-</pre>               
-                  </li>
-                  <li style="display:none" class="tab t2">
-<pre>
-  touch.on('#scale .target', 'touchstart', function(ev){
-    ev.originEvent.preventDefault();
-  });
-  
-  var initialScale = 1;
-  touch.on('#scale .target', 'pinch',function(ev){  
-    var currentScale = ev.scale - 1;
-    currentScale = initialScale + currentScale;
-    if(ev.fingerStatus === 'end'){
-        initialScale += (ev.scale - 1);
-        initialScale = initialScale > 2.5 ? 2.5 : initialScale;
-    }
-    currentScale = currentScale > 2.5 ? 2.5 : currentScale;
-    currentScale = currentScale < 1 ? 1 : currentScale;
-    
-    this.style.webkitTransform = 'scale(' + currentScale + ')';
-  });
-</pre>
-                  </li>
-                 </ul>
-               </div>
-               <div class="description">
-                  <p>双指按住收缩，最大放大比例为2.5倍。</p>
-               </div>
-            </div>
-            <div id="tap" class="demo" >
-                <div class="target"></div>
-                <div class="api-desc">
-                 <a class="title1 selected">API</a>
-                 <a class="title2"> Sample Code</a>
-                 <ul class="tabs">
-                  <li class="tab t1">
-<pre>
-touch.on('#tap .target', 'tap hold doubletap', function(ev){});
-参数1： tap元素选择器
-参数2： 事件名称tap、hold和doubletap。
-参数3： 事件处理函数
-
-</pre>               
-                  </li>
-                  <li style="display:none" class="tab t2">
-<pre>
-touch.on('#tap .target', 'hold tap doubletap', function(ev){
-    this.className = this.className + ' hold-ani';
-});
-</pre>
-                  </li>
-                 </ul>
-               </div>
-               <div class="description">
-                  <p>单指触摸点击、双击或者长摁手指， 元素放大并马上返回原状态</p>
-               </div>
-            </div>
-            <div id="swipe" class="demo" >
-                <div class="target"></div>
-                
-                <div class="slide">
-                    <div class="h"></div>
-                    <div id="factor" class="v">5</div>
-                    <div id="min-num" style="position:absolute;left: -51px;top:10px">加速度</div>
+                <div id="docapi" class="doc-api">
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            <span style="color:red">
+                                Note：
+                            </span>
+                            与0.2.6及之前的touch.js兼容
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    兼容原因
+                                </strong>
+                                <br />
+                                0.2.6及之前的touch.js不支持事件代理机制，而新的touch.js通过手势识别，事件冒泡及原生的事件对象，提供事件代理机制和自定义事件的能力，从而极大提升性能。原有的stopPropagation会阻止原生事件冒泡，从而使手势识别失效，因此，需要手动删除/注释stopPropagation语句。麻烦各位根据自己项目的实际情况，选择性升级touch.js。
+                            </p>
+                            <p class="second">
+                                <br />
+                                <strong>
+                                    兼容方法
+                                </strong>
+                                <br />
+                                删除/注释所有绑定中的stopPropagation方法
+                                <pre>
+                                    touch.on('#rotation .target', 'touchstart', function(ev){ ev.startRotate();
+                                    ev.originEvent.preventDefault(); //ev.originEvent.stopPropagation(); //注释掉或者删掉stopPropagation方法
+                                    });
+                                </pre>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            touch.config(config)
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                : 对百度云手势事件库进行全局配置。
+                            </p>
+                            <strong>
+                                参数描述:
+                            </strong>
+                            <p>
+                                config为一个对象：
+                                <pre class="second">
+                                    { tap: true, //tap类事件开关, 默认为true doubleTap: true, //doubleTap事件开关， 默认为true
+                                    hold: true, //hold事件开关, 默认为true holdTime: 650, //hold时间长度 swipe: true,
+                                    //swipe事件开关 swipeTime: 300, //触发swipe事件的最大时长 swipeMinDistance: 18, //swipe移动最小距离
+                                    swipeFactor: 5, //加速因子, 值越大变化速率越快 drag: true, //drag事件开关 pinch: true, //pinch类事件开关
+                                    }
+                                </pre>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            touch.on( delegateElement, types, selector, callback );
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                :事件代理方法。
+                            </p>
+                            <strong>
+                                参数描述:
+                            </strong>
+                            <p>
+                                <b>
+                                    delegateElement
+                                </b>
+                                <i>
+                                    {String} or {Element}
+                                </i>
+                                : 事件代理元素或选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    types
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 事件的类型, 可接受多个事件以空格分开。支持原生事件的透传:
+                            </p>
+                            <p>
+                                <b>
+                                    selector
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 代理子元素选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    callback
+                                </b>
+                                <i>
+                                    {Function}
+                                </i>
+                                : 事件处理函数
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            touch.on( element, types, callback );
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                :事件绑定方法，根据参数区分事件绑定和事件代理。
+                            </p>
+                            <strong>
+                                参数描述:
+                            </strong>
+                            <p>
+                                <b>
+                                    element
+                                </b>
+                                <i>
+                                    {String} or {Element}
+                                </i>
+                                : 事件绑定元素或选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    types
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 事件的类型, 可接受多个事件以空格分开。支持原生事件的透传:
+                            </p>
+                            <p>
+                                <b>
+                                    callback
+                                </b>
+                                <i>
+                                    {Function}
+                                </i>
+                                : 事件处理函数
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            touch.off( delegateElement, types, selector, callback )
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                : 解除某元素上的事件代理。
+                            </p>
+                            <strong>
+                                参数描述:
+                            </strong>
+                            <p>
+                                <b>
+                                    delegateElement
+                                </b>
+                                <i>
+                                    {String} or {Element}
+                                </i>
+                                : 元素对象或选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    types
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 事件的类型。
+                            </p>
+                            <p>
+                                <b>
+                                    selector
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 代理子元素选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    callback
+                                </b>
+                                <i>
+                                    {Function}
+                                </i>
+                                : 事件处理函数, 移除函数与绑定函数必须为同一引用。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            touch.off( element, types, callback )
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                : 解除某元素上的事件绑定，根据参数区分事件绑定和事件代理。
+                            </p>
+                            <strong>
+                                参数描述:
+                            </strong>
+                            <p>
+                                <b>
+                                    element
+                                </b>
+                                <i>
+                                    {String} or {Element}
+                                </i>
+                                : 元素对象、选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    types
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 事件的类型。
+                            </p>
+                            <p>
+                                <b>
+                                    callback
+                                </b>
+                                <i>
+                                    {Function}
+                                </i>
+                                : 事件处理函数, 移除函数与绑定函数必须为同一引用。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            touch.trigger(element, type);
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                : 触发某个元素上的某事件。
+                            </p>
+                            <strong>
+                                参数描述:
+                            </strong>
+                            <p>
+                                <b>
+                                    element
+                                </b>
+                                <i>
+                                    {String} or {Element}
+                                </i>
+                                : 元素对象或选择器。
+                            </p>
+                            <p>
+                                <b>
+                                    type
+                                </b>
+                                <i>
+                                    {String}
+                                </i>
+                                : 事件的类型。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            支持的手势事件
+                        </h4>
+                        <div class="entry-wrapper">
+                            <ul style="list-style-type: disc;">
+                                <li>
+                                    pinchstart
+                                </li>
+                                <li>
+                                    pinchend
+                                </li>
+                                <li>
+                                    pinch
+                                </li>
+                                <li>
+                                    pinchin
+                                </li>
+                                <li>
+                                    pinchout
+                                </li>
+                                <li>
+                                    rotateleft
+                                </li>
+                                <li>
+                                    rotateright
+                                </li>
+                                <li>
+                                    rotate
+                                </li>
+                                <li>
+                                    swipestart
+                                </li>
+                                <li>
+                                    swiping
+                                </li>
+                                <li>
+                                    swipeend
+                                </li>
+                                <li>
+                                    swipeleft
+                                </li>
+                                <li>
+                                    swiperight
+                                </li>
+                                <li>
+                                    swipeup
+                                </li>
+                                <li>
+                                    swipedown
+                                </li>
+                                <li>
+                                    swipe
+                                </li>
+                                <li>
+                                    drag
+                                </li>
+                                <li>
+                                    dragstart
+                                </li>
+                                <li>
+                                    dragend
+                                </li>
+                                <li>
+                                    hold
+                                </li>
+                                <li>
+                                    tap
+                                </li>
+                                <li>
+                                    doubletap
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            事件对象自定义属性
+                        </h4>
+                        <div class="entry-wrapper">
+                            <p class="second">
+                                <strong>
+                                    Description
+                                </strong>
+                                :
+                                <br />
+                                事件处理函数的第一个参数为事件对象，touch.js扩充了事件对象，以下为为手势新增的属性。
+                            </p>
+                            <br />
+                            <pre>
+                                originEvent //触发某事件的原生对象. type //事件的名称 rotation //旋转角度 scale //缩放比例 direction
+                                //操作的方向属性 fingersCount //操作的手势数量 position //相关位置信息, 不同的操作产生不同的位置信息 distance
+                                //swipe类两点之间的位移 distanceX //swipe类事件x方向的位移 distanceY //swipe类事件y方向的位移 angle
+                                //swipe类事件触发时偏移角度 duration //touchstart 与 touchend之间的时间戳 factor //swipe事件加速度因子
+                                startRotate //启动单指旋转方法，在某个元素的touchstart触发时调用。
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="api-item">
+                        <h4 class="setion-title">
+                            <strong>
+                                已知问题
+                            </strong>
+                        </h4>
+                        <div class="entry-wrapper">
+                            <pre>
+                                在Android 2.3默认浏览器中， touchmove不会连续触发， 解决该问题的方法可以再touchstart中禁止默认行为。 示例代码：
+                                touch.on(el, 'touchstart', function(ev){ ev.originEvent.preventDefault();
+                                }, false); touch.on(el, 'touchmove', function(ev){ console.log('moving...');
+                                }); 在页面中设置viewport为maximum-scale=1.0 或 user-scalable=no 参数会导致touchmove事件不会触发,
+                                该问题产生于Android4.1.1默认浏览器中。
+                            </pre>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="api-desc">
-                 <a class="title1 selected">API</a>
-                 <a class="title2"> Sample Code</a>
-                 <ul class="tabs">
-                 <li class="tab t1">
-<pre>
-touch.on('#swipe .target', 'swipe',  function(ev){});
-参数1： swipe元素选择器
-参数2： 事件名称swipe
-参数3： 事件处理函数
-
-</pre>               
-                  </li>
-                  <li style="display:none" class="tab t2">
-<pre>
-touch.on('#swipe .target', 'touchstart', function(ev){
-    ev.originEvent.preventDefault();
-});
-var swipeHandler = function(ev){
-    ev.factor = ev.factor > 2 ? 2 : ev.factor;
-    this.style.webkitTransition = 'margin-left ease '+ ev.factor +'s';
-    
-    if(ev.direction === 'right'){
-        this.style.marginLeft = (this.parentNode.offsetWidth - this.offsetWidth) + 'px';
-    }else if(ev.direction === 'left'){
-        this.style.marginLeft = '0px'
-    }
-};
-touch.on('#swipe .target', 'swipe', swipeHandler);
-</pre>
-                  </li>
-                 </ul>
-               </div>
-               <div class="description">
-                  <p>
-                  单指在元素上向左轻滑， 然后向右轻滑。可以小球的滑动改变加速度加快滑动的速率。
-                  </p>
-               </div>
             </div>
-            <div id="drag" class="demo" >
-                <div class="target"></div>
-                <div class="api-desc">
-                 <a class="title1 selected">API</a>
-                 <a class="title2"> Sample Code</a>
-                 <ul class="tabs">
-                 <li class="tab t1">
-<pre>
-touch.on('#drag .target', 'drag', function(ev){});
-参数1： drag元素选择器
-参数2： 事件名称drag
-参数3： 事件处理函数
-
-</pre>               
-                  </li>
-                  <li style="display:none" class="tab t2">
-<pre>
-touch.on('#drag .target', 'touchstart', function(ev){
-    ev.originEvent.preventDefault();
-});
-var initial = 0;
-touch.on('#drag .target', 'drag', function(ev){
-    var d = initial + ev.distanceX;
-    
-    if(ev.fingerStatus === 'end'){
-       initial += ev.distanceX;
-    }
-    this.style.marginLeft = d + 'px';
-});
-</pre>
-                  </li>
-                 </ul>
-               </div>
-               <div class="description">
-                  <p>
-                  单指在元素上向左右拖动。
-                  </p>
-               </div>
-            </div> 
-            <div id="touch" class="demo">
-                <div class="target"></div>
-                
-                <div class="api-desc">
-                 <a class="title1 selected">API</a>
-                 <a class="title2"> Sample Code</a>
-                 <ul class="tabs">
-                 <li class="tab t1">
-<pre>
-touch.on('#touch .target', 'touchstart touchmove touchend', function(ev){});
-参数1： touch 元素选择器
-参数2： 原生事件名称touchstart touchmove touchend
-参数3： 事件处理函数
-
-</pre>               
-                  </li>
-                  <li style="display:none" class="tab t2">
-<pre>
-touch.on('#touch .target', 'touchstart', function(ev){
-  if(ev.type === 'touchstart' || ev.type === 'mousedown'){
-     this.className = this.className + ' shake';
-  }
-});
-</pre>
-                  </li>
-                 </ul>
-               </div>
-               <div class="description">
-                  <p>
-                     百度云手势事件库同时兼容原生事件的绑定。
-                  </p>
-               </div>
+            <div id="content" class="content">
+                <div id="pointer-list" class="left">
+                    <ul>
+                        <!--li class="doc" name="doc">Document<span/></li-->
+                        <li id="hover" class="rotation" name="rotation">
+                            Rotation
+                            <span/>
+                        </li>
+                        <li class="scale" name="scale">
+                            Scale
+                            <span/>
+                        </li>
+                        <li class="tap" name="tap">
+                            Tap&Hold
+                            <span/>
+                        </li>
+                        <li class="swipe" name="swipe">
+                            Swipe
+                            <span/>
+                        </li>
+                        <li class="drag" name="drag">
+                            Drag
+                            <span/>
+                        </li>
+                        <li class="touch" name="touch">
+                            Touch
+                            <span/>
+                        </li>
+                    </ul>
+                    <img class="qr" src="images/qr.png">
+                    </img>
+                    <div class="contact">
+                        <h4>
+                            联系我们：
+                        </h4>
+                        <a>
+                            code-feedback@baidu.com
+                        </a>
+                    </div>
+                </div>
+                <div id="pannels" class="right">
+                    <div id="console">
+                    </div>
+                    <div id="rotation" class="demo" name="cur">
+                        <div class="target">
+                        </div>
+                        <div class="api-desc">
+                            <a class="title1 selected">
+                                API
+                            </a>
+                            <a class="title2">
+                                Sample Code
+                            </a>
+                            <ul class="tabs">
+                                <li class="tab t1">
+                                    <pre>
+                                        touch.on('#rotation .target', 'rotate', function(ev){}); 参数1： 元素选择器 参数2：
+                                        事件名称rotate。 参数3： 事件处理函数。
+                                    </pre>
+                                </li>
+                                <li style="display:none" class="tab t2">
+                                    <pre>
+                                        var angle = 30; touch.on('#rotation .target', 'touchstart', function(ev){
+                                        ev.startRotate(); ev.originEvent.preventDefault(); }); touch.on('#rotation
+                                        .target', 'rotate', function(ev){ var totalAngle = angle + ev.rotation;
+                                        if(ev.fingerStatus === 'end'){ angle = angle + ev.rotation; } this.style.webkitTransform
+                                        = 'rotate(' + totalAngle + 'deg)'; });
+                                    </pre>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <p>
+                                双指按住旋转， 并启动单指旋转。
+                            </p>
+                        </div>
+                    </div>
+                    <div id="scale" class="demo">
+                        <div class="target">
+                        </div>
+                        <div class="api-desc">
+                            <a class="title1 selected">
+                                API
+                            </a>
+                            <a class="title2">
+                                Sample Code
+                            </a>
+                            <ul class="tabs">
+                                <li class="tab t1">
+                                    <pre>
+                                        touch.on('#scale .target', 'pinch', function(ev){}); 参数1： 元素选择器 参数2： 事件名称pinch。
+                                        参数3： 事件处理函数
+                                    </pre>
+                                </li>
+                                <li style="display:none" class="tab t2">
+                                    <pre>
+                                        touch.on('#scale .target', 'touchstart', function(ev){ ev.originEvent.preventDefault();
+                                        }); var initialScale = 1; touch.on('#scale .target', 'pinch',function(ev){
+                                        var currentScale = ev.scale - 1; currentScale = initialScale + currentScale;
+                                        if(ev.fingerStatus === 'end'){ initialScale += (ev.scale - 1); initialScale
+                                        = initialScale > 2.5 ? 2.5 : initialScale; } currentScale = currentScale
+                                        > 2.5 ? 2.5 : currentScale; currentScale = currentScale
+                                        < 1 ? 1 : currentScale; this.style.webkitTransform='scale(' + currentScale
+                                        + ')'; }); </pre>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <p>
+                                双指按住收缩，最大放大比例为2.5倍。
+                            </p>
+                        </div>
+                    </div>
+                    <div id="tap" class="demo">
+                        <div class="target">
+                        </div>
+                        <div class="api-desc">
+                            <a class="title1 selected">
+                                API
+                            </a>
+                            <a class="title2">
+                                Sample Code
+                            </a>
+                            <ul class="tabs">
+                                <li class="tab t1">
+                                    <pre>
+                                        touch.on('#tap .target', 'tap hold doubletap', function(ev){}); 参数1： tap元素选择器
+                                        参数2： 事件名称tap、hold和doubletap。 参数3： 事件处理函数
+                                    </pre>
+                                </li>
+                                <li style="display:none" class="tab t2">
+                                    <pre>
+                                        touch.on('#tap .target', 'hold tap doubletap', function(ev){ this.className
+                                        = this.className + ' hold-ani'; });
+                                    </pre>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <p>
+                                单指触摸点击、双击或者长摁手指， 元素放大并马上返回原状态
+                            </p>
+                        </div>
+                    </div>
+                    <div id="swipe" class="demo">
+                        <div class="target">
+                        </div>
+                        <div class="slide">
+                            <div class="h">
+                            </div>
+                            <div id="factor" class="v">
+                                5
+                            </div>
+                            <div id="min-num" style="position:absolute;left: -51px;top:10px">
+                                加速度
+                            </div>
+                        </div>
+                        <div class="api-desc">
+                            <a class="title1 selected">
+                                API
+                            </a>
+                            <a class="title2">
+                                Sample Code
+                            </a>
+                            <ul class="tabs">
+                                <li class="tab t1">
+                                    <pre>
+                                        touch.on('#swipe .target', 'swipe', function(ev){}); 参数1： swipe元素选择器 参数2：
+                                        事件名称swipe 参数3： 事件处理函数
+                                    </pre>
+                                </li>
+                                <li style="display:none" class="tab t2">
+                                    <pre>
+                                        touch.on('#swipe .target', 'touchstart', function(ev){ ev.originEvent.preventDefault();
+                                        }); var swipeHandler = function(ev){ ev.factor = ev.factor > 2 ? 2 : ev.factor;
+                                        this.style.webkitTransition = 'margin-left ease '+ ev.factor +'s'; if(ev.direction
+                                        === 'right'){ this.style.marginLeft = (this.parentNode.offsetWidth - this.offsetWidth)
+                                        + 'px'; }else if(ev.direction === 'left'){ this.style.marginLeft = '0px'
+                                        } }; touch.on('#swipe .target', 'swipe', swipeHandler);
+                                    </pre>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <p>
+                                单指在元素上向左轻滑， 然后向右轻滑。可以小球的滑动改变加速度加快滑动的速率。
+                            </p>
+                        </div>
+                    </div>
+                    <div id="drag" class="demo">
+                        <div class="target">
+                        </div>
+                        <div class="api-desc">
+                            <a class="title1 selected">
+                                API
+                            </a>
+                            <a class="title2">
+                                Sample Code
+                            </a>
+                            <ul class="tabs">
+                                <li class="tab t1">
+                                    <pre>
+                                        touch.on('#drag .target', 'drag', function(ev){}); 参数1： drag元素选择器 参数2：
+                                        事件名称drag 参数3： 事件处理函数
+                                    </pre>
+                                </li>
+                                <li style="display:none" class="tab t2">
+                                    <pre>
+                                        touch.on('#drag .target', 'touchstart', function(ev){ ev.originEvent.preventDefault();
+                                        }); var initial = 0; touch.on('#drag .target', 'drag', function(ev){ var
+                                        d = initial + ev.distanceX; if(ev.fingerStatus === 'end'){ initial += ev.distanceX;
+                                        } this.style.marginLeft = d + 'px'; });
+                                    </pre>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <p>
+                                单指在元素上向左右拖动。
+                            </p>
+                        </div>
+                    </div>
+                    <div id="touch" class="demo">
+                        <div class="target">
+                        </div>
+                        <div class="api-desc">
+                            <a class="title1 selected">
+                                API
+                            </a>
+                            <a class="title2">
+                                Sample Code
+                            </a>
+                            <ul class="tabs">
+                                <li class="tab t1">
+                                    <pre>
+                                        touch.on('#touch .target', 'touchstart touchmove touchend', function(ev){});
+                                        参数1： touch 元素选择器 参数2： 原生事件名称touchstart touchmove touchend 参数3： 事件处理函数
+                                    </pre>
+                                </li>
+                                <li style="display:none" class="tab t2">
+                                    <pre>
+                                        touch.on('#touch .target', 'touchstart', function(ev){ if(ev.type ===
+                                        'touchstart' || ev.type === 'mousedown'){ this.className = this.className
+                                        + ' shake'; } });
+                                    </pre>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="description">
+                            <p>
+                                百度云手势事件库同时兼容原生事件的绑定。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear">
+                </div>
             </div>
         </div>
-        <div class="clear"></div>
-     </div>
-  </div>
-  <div id="copyMask"></div>
-  <div class="touch-main" style="display: none">
-      <div class="logo"><p>手势事件库 Baidu Cloud Event & Gesture Library</p></div>
-      <div class="tools">
-         <div class="menu-btn">Rotation <span class="arrow"></span></div>
-         <div class="menu-list" style="display: none">
-         </div>
-      </div>
-      <div id="d-t-content" class="touch-content"></div>
-  </div>
-  <script type="text/javascript">
-      var isTouch = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
-      isTouch = location.hash == '#touch' ? true : isTouch;
-      if(isTouch){
-          var doc = document;
-          doc.querySelector('.main').style.width = '100%';
-          var pc = doc.getElementById('pc');
-          var pannels = doc.getElementById('pannels');
-          var pl = document.getElementById('pointer-list');
-          var qr = document.querySelector('.qr');
-          var contact = document.querySelector('.contact');
-          qr.parentNode.removeChild(qr);
-          contact.parentNode.removeChild(contact);
-          
-          pc.style.display = 'none';
-          var touchmain = document.querySelector('.touch-main');
-          var touchContent = doc.getElementById('d-t-content');
-          var menuList = document.querySelector('.menu-list');
-          
-          touchContent.innerHTML = pannels.outerHTML;
-          menuList.innerHTML =  '<div class="arrow"></div>' + pl.outerHTML;
-          pc.parentNode.removeChild(pc);
-          touchmain.style.display = 'block';
-      }
-  </script>
-  <script type="text/javascript" src="clipboard.js"></script>
-  <script type="text/javascript" src="touch-0.2.9.js"></script>
-  <script type="text/javascript" src="demo.js"></script>
-  <script type="text/javascript">
-    //var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    //document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffffba4526d43301ecb10cceaf968f17d' type='text/javascript'%3E%3C/script%3E"));
-  </script>
+        <div id="copyMask">
+        </div>
+        <div class="touch-main" style="display: none">
+            <div class="logo">
+                <p>
+                    手势事件库 Baidu Cloud Event & Gesture Library
+                </p>
+            </div>
+            <div class="tools">
+                <div class="menu-btn">
+                    Rotation
+                    <span class="arrow">
+                    </span>
+                </div>
+                <div class="menu-list" style="display: none">
+                </div>
+            </div>
+            <div id="d-t-content" class="touch-content">
+            </div>
+        </div>
+        <script type="text/javascript">
+            var isTouch = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+            isTouch = location.hash == '#touch' ? true: isTouch;
+            if (isTouch) {
+                var doc = document;
+                doc.querySelector('.main').style.width = '100%';
+                var pc = doc.getElementById('pc');
+                var pannels = doc.getElementById('pannels');
+                var pl = document.getElementById('pointer-list');
+                var qr = document.querySelector('.qr');
+                var contact = document.querySelector('.contact');
+                qr.parentNode.removeChild(qr);
+                contact.parentNode.removeChild(contact);
 
-</body>
+                pc.style.display = 'none';
+                var touchmain = document.querySelector('.touch-main');
+                var touchContent = doc.getElementById('d-t-content');
+                var menuList = document.querySelector('.menu-list');
+
+                touchContent.innerHTML = pannels.outerHTML;
+                menuList.innerHTML = '<div class="arrow"></div>' + pl.outerHTML;
+                pc.parentNode.removeChild(pc);
+                touchmain.style.display = 'block';
+            }
+        </script>
+        <script type="text/javascript" src="clipboard.js">
+        </script>
+        <script type="text/javascript" src="touch-0.2.9.js">
+        </script>
+        <script type="text/javascript" src="demo.js">
+        </script>
+        <script type="text/javascript">
+            //var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            //document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffffba4526d43301ecb10cceaf968f17d' type='text/javascript'%3E%3C/script%3E"));
+            
+        </script>
+    </body>
+
 </html>
