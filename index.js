@@ -1,5 +1,64 @@
 touch.on(document, 'DOMContentLoaded', function(){
 	
+	var $ = function(id){
+		return document.getElementById(id);
+	}
+	
+	var play = $("play"),
+		code = $("code");
+	
+	function refreshDemo(){
+		play.innerHTML = '<img class="target" src="images/cloud.png">';
+		code.innerHTML = "";
+	}
+	
+	var demos = {
+		rotate : function(){
+			refreshDemo();
+			var target = play.querySelector(".target");
+		},
+		scale : function(){
+			refreshDemo();
+			var target = play.querySelector(".target");
+			
+			touch.on(target, 'touchstart', function(ev){
+				ev.originEvent.preventDefault();
+			});
+
+			var initialScale = 1;
+			touch.on(target, 'pinch', function(ev){  
+				var currentScale = ev.scale - 1;
+				currentScale = initialScale + currentScale;
+				if(ev.fingerStatus === 'end'){
+					initialScale += (ev.scale - 1);
+					initialScale = initialScale > 2.5 ? 2.5 : initialScale;
+				}
+				currentScale = currentScale > 2.5 ? 2.5 : currentScale;
+				currentScale = currentScale < 1 ? 1 : currentScale;
+
+				this.style.webkitTransform = 'scale(' + currentScale + ')';
+			});
+		},
+		tap : function(){
+			refreshDemo();
+			var target = play.querySelector(".target");
+			
+			
+		},
+		swipe : function(){
+			refreshDemo();
+			var target = play.querySelector(".target");
+		},
+		drag : function(){
+			refreshDemo();
+			var target = play.querySelector(".target");
+		},
+		touch : function(){
+			refreshDemo();
+			var target = play.querySelector(".target");
+		}
+	}
+	
 	/* 
 	var navlist = document.querySelector("#navlist");
 	var arrow = document.querySelector("#nav #arrow");
