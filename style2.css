@@ -1,0 +1,155 @@
+body {
+	font: 14px/1.2em Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+	color: #333;
+}
+
+::selection {
+	text-shadow: none;
+	background: rgba(65,131,196,0.4); 
+}
+
+pre { 
+	background-color: rgba(0, 0, 0, 0.05);
+	-webkit-border-radius: 10px;
+	padding-left: 1em;
+}
+
+code { font: 14px/1.2em Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace; }
+code .keyword              { color: #3E6F2A; font-weight: bold; }
+code .string, code .regexp { color: #B23819; }
+code .class, code .special { color: #333; font-weight: bold; }
+code .number               { color: #B23819; }
+code .comment              { color: #998; }
+
+#main {
+	min-width : 320px;
+}
+
+.viewport {
+	max-width: 800px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#header {
+	/* 
+	border-top: 8px solid cornflowerblue; 
+	box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.07), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+	*/
+	background: #333;
+}
+
+#header .viewport{
+	max-width: 1200px;
+}
+
+#navlist{
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	width: 400px;
+	float: right;
+}
+
+#navlist li{
+	-webkit-box-flex: 1;
+	text-transform: uppercase;
+	padding: 1em;
+	font-size: 1.1em;
+}
+
+#navlist li a{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-transition: color .5s;
+	text-decoration: none;
+	color: #ccc;
+	letter-spacing: 0.0625rem;
+}
+
+#navlist li a:hover{
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+#navlist li .active{
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+#title{
+	text-align: center;
+	margin: 2em 0;
+}
+
+#title h1{
+	margin: 0;
+	font-size: 4em;
+	line-height: 1.8em;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+}
+
+#title h3{
+	font-weight : normal;
+	font-size: 1.1em;
+	text-transform: uppercase;
+	margin : 0;
+	color : #999;
+	position: relative;
+	top: -0.8em;
+}
+
+#download{
+
+}
+
+#download .link{
+	display: inline-block;
+	color: #fff;
+	background-color: #3276b1;
+	border-color: #285e8e;
+	-webkit-box-shadow: inset 0 -4px 0 #2a6496;
+	text-decoration: none;
+	padding: 1em 9em;
+	font-size: 1em;
+	border-radius: 6px;
+	margin: 0 1em;
+}
+
+#download .link:hover{
+	opacity: 0.9;
+}
+
+#download h1{
+	font-size: 2em;
+	line-height: 1.6em;
+	margin: 0.6em 0 .6em 1.6em;
+}
+
+#download #dl{
+	text-align: center;
+}
+
+#intro {
+	text-align: center;
+	padding : 2em;
+	margin-top: 2em;
+}
+
+#features{
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+}
+
+#features li{
+	-webkit-box-flex: 1;
+}
+
+#features li img{
+	max-width: 120px;
+	margin-bottom: 1em;
+}
+
+#features li span{
+	display: block;
+	line-height: 1.5em;
+}
