@@ -16,10 +16,10 @@
 		<header id="header">
 			<div class="viewport">
 				<ul id="navlist">
-					<li><a href="home" class="active">home</a></li>
-					<li><a href="example">example</a></li>
-					<li><a href="docs">documentation</a></li>
-					<li><a href="about">about</a></li>
+					<li><a href="index3.html" class="active">home</a></li>
+					<li><a href="examples.html">examples</a></li>
+					<li><a href="http://cloudajs.org/docs/step4_API_Documentation#h2_7">documentation</a></li>
+					<li><a href="github">github</a></li>
 				</ul>
 			</div>
 		</header>
@@ -27,20 +27,64 @@
 			<div class="viewport">
 				<h1>Touch.js</h1>
 				<h3>Baidu Cloud Event & Gesture Library</h3>
-				<p>百度云手势事件库<b>Touch.js</b>实现了Web App在触屏设备上的手势识别与事件管理机制</p>
-				<p>是近年来百度移动云事业部内部广泛使用的开发工具</p>
-				<p>代码开源旨在帮助更多开发者学习和开发出优秀的Web App产品</p>
+				<p>
+				百度云手势事件库Touch.js实现了Web App在触屏设备上的手势识别与事件管理机制<br>
+				是近年来百度移动云事业部内部广泛使用的开发工具<br>
+				代码开源旨在帮助更多开发者学习和开发出优秀的Web App产品
+				</p>
 			</div>
 		</section>
 		<section id="download">
 			<div class="viewport">
-				<h1>DOWNLOAD</h1>
+				<h1>Download</h1>
 				<div id="dl">
-					<a class="link" href="" target="_blank">Development</a>
 					<a class="link" href="" target="_blank">Production</a>
+					or
+					<a class="link" href="" target="_blank">view source on github</a>
+				</div>
+			</div>
+		</section>
+		<section id="features">
+			<div class="viewport">
+				<h1>Features</h1>
+				<ul id="fl">
+					<li>无侵入设计, 与现有代码与框架共存</li>
+					<li>原生出色的加速度感知与缓动效果, 优秀的单指旋转手势</li>
+					<li>基于原生事件, 支持事件代理, 性能更好</li>
+					<li>极简的API, 秒速上手, 玩转手势</li>
+				</ul>
+			</div>
+		</section>
+		<section id="examples">
+			<div class="viewport">
+				<h1>Examples</h1>
+				<div id="ec">
+					<pre>
+<code>
+//swipe example
+touch.on('.target', 'swipeleft swiperight', function(ev){
+    console.log("you have done", ev.type);
+});
+</code>
+               		</pre>
+               	<p>See more <a target="_blank" href="examples.html">live examples</a></p>
+				</div>
+			</div>
+		</section>
+		<section id="note">
+			<div class="viewport">
+				<h1>Note</h1>
+				<div id="nc">
+					<p>Touch.js手势库基于webkit核浏览器, 专为移动设备设计, 请在webkit核浏览器中使用.</p>	
 				</div>
 			</div>
 		</section>
 	</div>
+
+    <script type="text/javascript" src="hijs.js"></script>
+    <script type="text/javascript" src="touch-0.2.9.js"></script>
+    <script type="text/javascript">
+    	runhijs();
+    </script>
 </body>
 </html>

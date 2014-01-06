@@ -186,7 +186,7 @@ http.createServer(function(req, res){
   var path = u.pathname;
   
   if(path === '/'){
-    path = '/index2.html'
+    path = '/index3.html'
   }
   
   fs.readFile('.' + path, function(err, data){

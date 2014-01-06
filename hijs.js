@@ -26,45 +26,51 @@ var syntax = [
   ['keyword', new(RegExp)('\\b(' + keywords.join('|') + ')\\b', 'g')],
   ['special', new(RegExp)('\\b(' + special.join('|') + ')\\b', 'g')]
 ];
+  
 var nodes, table = {};
 
-if (/^[a-z]+$/.test(selector)) {
-    nodes = document.getElementsByTagName(selector);
-} else if (/^\.[\w-]+$/.test(selector)) {
-    nodes = document.getElementsByClassName(selector.slice(1));
-} else if (document.querySelectorAll) {
-    nodes = document.querySelectorAll(selector);
-} else {
-    nodes = [];
-}
+function runhijs(){
+  nodes = [];
+  table = {};
+  
+  if (/^[a-z]+$/.test(selector)) {
+      nodes = document.getElementsByTagName(selector);
+  } else if (/^\.[\w-]+$/.test(selector)) {
+      nodes = document.getElementsByClassName(selector.slice(1));
+  } else if (document.querySelectorAll) {
+      nodes = document.querySelectorAll(selector);
+  } else {
+      nodes = [];
+  }
 
-for (var i = 0, children; i < nodes.length; i++) {
-    children = nodes[i].childNodes;
+  for (var i = 0, children; i < nodes.length; i++) {
+      children = nodes[i].childNodes;
 
-    for (var j = 0, str; j < children.length; j++) {
-        code = children[j];
+      for (var j = 0, str; j < children.length; j++) {
+          code = children[j];
 
-        if (code.length >= 0) { // It's a text node
-            // Don't highlight command-line snippets
-            if (! /^\$/.test(code.nodeValue.trim())) {
-                syntax.forEach(function (s) {
-                    var k = s[0], v = s[1];
-                    code.nodeValue = code.nodeValue.replace(v, function (_, m) {
-                        return '\u00ab' + encode(k) + '\u00b7'
-                                        + encode(m) +
-                               '\u00b7' + encode(k) + '\u00bb';
-                    });
-                });
-            }
-        }
-    }
-}
-for (var i = 0; i < nodes.length; i++) {
-    nodes[i].innerHTML =
-        nodes[i].innerHTML.replace(/\u00ab(.+?)\u00b7(.+?)\u00b7\1\u00bb/g, function (_, name, value) {
-            value = value.replace(/\u00ab[^\u00b7]+\u00b7/g, '').replace(/\u00b7[^\u00bb]+\u00bb/g, '');
-            return '<span class="' + decode(name) + '">' + escape(decode(value)) + '</span>';
-    });
+          if (code.length >= 0) { // It's a text node
+              // Don't highlight command-line snippets
+              if (! /^\$/.test(code.nodeValue.trim())) {
+                  syntax.forEach(function (s) {
+                      var k = s[0], v = s[1];
+                      code.nodeValue = code.nodeValue.replace(v, function (_, m) {
+                          return '\u00ab' + encode(k) + '\u00b7'
+                                          + encode(m) +
+                                 '\u00b7' + encode(k) + '\u00bb';
+                      });
+                  });
+              }
+          }
+      }
+  }
+  for (var i = 0; i < nodes.length; i++) {
+      nodes[i].innerHTML =
+          nodes[i].innerHTML.replace(/\u00ab(.+?)\u00b7(.+?)\u00b7\1\u00bb/g, function (_, name, value) {
+              value = value.replace(/\u00ab[^\u00b7]+\u00b7/g, '').replace(/\u00b7[^\u00bb]+\u00bb/g, '');
+              return '<span class="' + decode(name) + '">' + escape(decode(value)) + '</span>';
+      });
+  }
 }
 
 function escape(str) {
@@ -89,5 +95,7 @@ function decode (str) {
         }).join('');
     }
 }
+
+window.runhijs = runhijs;
 
 })(window.hijs);
