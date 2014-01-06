@@ -25,6 +25,23 @@
 			}
 		});
 
+		function entry(act){
+			if(state === act){ return; }
+			state = act;
+			playArea.innerHTML = "";
+			var target = document.createElement("img");
+			target.id = "target";
+			target.draggable = false;
+			target.src = "images/cloud.png";
+			playArea.appendChild(target);
+			action[act]();
+			codeArea.innerHTML = document.querySelector(prefix + act + suffix).innerHTML.trim();
+			runhijs();
+			setTimeout(function(){
+				target.classList.add("show");
+			}, 10);
+		}
+
 		var action = {
 			rotate : function(){
 				log("利用startRotate, 单指触发滚动事件");
@@ -137,27 +154,13 @@
 			},
 			touch : function(){
 				log("识别原生事件");
+				touch.on('#target', 'touchstart', function(ev){
+					ev.preventDefault();
+				});
 				touch.on('#target', 'touchstart touchmove touchend', function(ev){
 					log("当前为原生事件: " + ev.type);
 				});
 			}
-		}
-
-		function entry(act){
-			if(state === act){ return; }
-			state = act;
-			playArea.innerHTML = "";
-			var target = document.createElement("img");
-			target.id = "target";
-			target.draggable = false;
-			target.src = "images/cloud.png";
-			playArea.appendChild(target);
-			action[act]();
-			codeArea.innerHTML = document.querySelector(prefix + act + suffix).innerHTML.trim();
-			runhijs();
-			setTimeout(function(){
-				target.classList.add("show");
-			}, 10);
 		}
 		
 		//init

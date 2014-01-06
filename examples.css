@@ -121,13 +121,14 @@ code .comment              { color: #998; }
 @media screen and (max-width:767px){
 	#play {
 		width: 320px;
-		height: 440px;
+		height: 300px;
 		position: relative;
 		margin: 0 auto;
 	}
 
 	#play #target{
 		left: 76px;
+		top: 60px;
 	}
 
 }
@@ -142,13 +143,13 @@ code .comment              { color: #998; }
 
 	#play #target{
 		left: 312px;
+		top: 130px;
 	}
 
 }
 
 #play #target{
 	position: absolute;
-	top: 130px;
 	cursor: pointer;
 	width: 166px;
 	border: 1px solid #ddd;

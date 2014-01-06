@@ -56,7 +56,7 @@ code .comment              { color: #998; }
 
 @media screen and (min-width:640px){
 	#header .viewport{
-		max-width: 1200px;
+		max-width: 1180px;
 	}
 }
 
@@ -146,7 +146,7 @@ code .comment              { color: #998; }
 	-webkit-box-shadow: inset 0 -4px 0 #2a6496;
 	text-decoration: none;
 	padding: 1em;
-	width: 290px;
+	width: 275px;
 	font-size: 1em;
 	border-radius: 6px;
 	margin: 0 1em;
