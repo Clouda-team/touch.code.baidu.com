@@ -48,15 +48,15 @@ code .comment              { color: #998; }
 	box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width:639px){
+@media screen and (max-width:768px){
 	#header .viewport{
-		max-width: 600px;
+		max-width: 768px;
 	}
 }
 
-@media screen and (min-width:640px){
+@media screen and (min-width:769px){
 	#header .viewport{
-		max-width: 1180px;
+		max-width: 1300px;
 	}
 }
 
@@ -70,8 +70,9 @@ code .comment              { color: #998; }
 #navlist li{
 	-webkit-box-flex: 1;
 	text-transform: uppercase;
-	padding: 1em;
+	padding: 1em 0;
 	font-size: 0.9em;
+	text-align: center;
 }
 
 #navlist li a{
@@ -79,7 +80,7 @@ code .comment              { color: #998; }
 	-webkit-transition: color .5s;
 	text-decoration: none;
 	color: #ccc;
-	letter-spacing: 0.0625rem;
+	font-family: verdana;
 }
 
 #navlist li a:hover{
@@ -131,9 +132,14 @@ code .comment              { color: #998; }
 	line-height: 2em;
 }
 
-#title h3 span{
+#title h3 a{
 	color: #3276b1;
 	font-weight: bold;
+	text-decoration: none;
+}
+
+#title h3 a:hover{
+	text-decoration: underline;
 }
 
 #download h1, #features h1, #examples h1, #note h1{
