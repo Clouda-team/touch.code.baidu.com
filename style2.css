@@ -42,7 +42,7 @@ code .comment              { color: #998; }
 }
 
 #header {
-	border-top: 3px solid #3276b1;
+	/*border-top: 3px solid #3276b1;*/
 	border-bottom: 1px solid #000;
 	background: #333;
 	box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
@@ -63,7 +63,7 @@ code .comment              { color: #998; }
 #navlist{
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
-	width: 320px;
+	width: 330px;
 	float: right;
 }
 
@@ -94,31 +94,47 @@ code .comment              { color: #998; }
 
 #title{
 	text-align: center;
-	margin: 3em 0;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
 }
 
-#title h1{
-	margin: 0;
-	font-size: 3.6em;
-	line-height: 1.8em;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
+@media screen and (min-width:768px){
+	#title h1{
+		margin: 0;
+		font-size: 4em;
+		line-height: 2em;
+		text-transform: uppercase;
+		letter-spacing: .2em;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width:767px){
+	#title h1{
+		margin: 0;
+		font-size: 3.2em;
+		line-height: 1.8em;
+		text-transform: uppercase;
+		letter-spacing: .2em;
+		text-align: center;
+	}
 }
 
 #title h3{
 	font-weight : normal;
-	font-size: 1em;
 	text-transform: uppercase;
 	margin : 0;
+	text-align: center;
 	color : #999;
 	position: relative;
-	top: -0.8em;
+	top: -1.5em;
+	line-height: 2em;
 }
 
-#title p{
-	line-height: 1.8em;
+#title h3 span{
+	color: #3276b1;
+	font-weight: bold;
 }
-
 
 #download h1, #features h1, #examples h1, #note h1{
 	font-family: "Courier", sans-serif;
@@ -169,28 +185,77 @@ code .comment              { color: #998; }
 	text-align: center;
 }
 
-#features{
+#intro{
+	text-align: center;
+	background: #7ec9ac;
+	background: #3276b1;
+	color: #fff;
+	padding: 2em;
 	margin-bottom: 2em;
 }
 
-#features #fl{
-	line-height: 1.8em;
-	list-style: disc;
-	margin-left: 5em;
+@media screen and (min-width:1001px){
+	#features{
+		display: -webkit-box;
+		-webkit-box-orient: horizontal;
+		max-width: 1000px;
+		margin: 0 auto;
+	}
 }
 
-@media screen and (max-width:639px){
-	#features #fl{
-		margin-left: 3em;
+
+@media screen and (min-width:768px) and (max-width: 1000px){
+	#features{
+		display: -webkit-box;
+		-webkit-box-orient: horizontal;
+		max-width: 768px;
+		margin: 0 auto;
 	}
+}
+
+@media screen and (max-width:767px){
+	#features{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+	
+	#features li{
+		margin-bottom: 1em;
+	}
+}
+
+#features{
+	-webkit-transition: all 0.3s ease;
+}
+
+#features li{
+	-webkit-box-flex: 1;
+}
+
+#features li img{
+	max-width: 120px;
+	margin-bottom: 1em;
+}
+
+#features li span{
+	display: block;
+	line-height: 1.5em;
 }
 
 #examples {
 	margin-bottom: 1em;
 }
 
-#examples #ec{
-	margin: 0.5em 4em 0.2em 3.7em
+@media screen and (min-width:768px){
+	#examples #ec{
+		margin: 0.5em 4em 0.2em 3.7em
+	}
+}
+
+@media screen and (max-width:767px){
+	#examples #ec{
+		margin: 0.5em 0.9em 0.2em 1.2em;
+	}
 }
 
 #examples a{
@@ -208,4 +273,8 @@ code .comment              { color: #998; }
 
 #note #nc{
 	margin: 0.5em 4em 0.2em 3.7em
+}
+
+#note #nc p{
+	line-height: 1.5em;
 }

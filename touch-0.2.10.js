@@ -117,7 +117,6 @@ var touch = touch || {};
 				el.dispatchEvent(e);
 			}
 		}
-
 	};
 
 	/**

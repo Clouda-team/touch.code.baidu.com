@@ -20,27 +20,12 @@
 			}
 			if(!e.target.classList.contains("active")){
 				nl.querySelector(".active").classList.remove("active");
-				e.target.classList.add("active");
-				entry(act);
+				setTimeout(function(){
+					e.target.classList.add("active");
+					entry(act);
+				},10);
 			}
 		});
-
-		function entry(act){
-			if(state === act){ return; }
-			state = act;
-			playArea.innerHTML = "";
-			var target = document.createElement("img");
-			target.id = "target";
-			target.draggable = false;
-			target.src = "images/cloud.png";
-			playArea.appendChild(target);
-			action[act]();
-			codeArea.innerHTML = document.querySelector(prefix + act + suffix).innerHTML.trim();
-			runhijs();
-			setTimeout(function(){
-				target.classList.add("show");
-			}, 10);
-		}
 
 		var action = {
 			rotate : function(){
@@ -93,9 +78,9 @@
 					log("当前事件为: " + ev.type);
 
 					var _this = this;
-					this.classList.add("shake");
+					this.classList.add("bounce");
 					touch.on(this, "webkitAnimationEnd", function(){
-						_this.classList.remove("shake");
+						_this.classList.remove("bounce");
 					});
 				});
 			},
@@ -158,11 +143,38 @@
 					ev.preventDefault();
 				});
 				touch.on('#target', 'touchstart touchmove touchend', function(ev){
+					var _this = this;
+					if(!this.classList.contains("bounce")){
+						if(ev.type === "mousedown" || ev.type === "touchstart"){
+							this.classList.add("bounce");
+							touch.on(this, "webkitAnimationEnd", function(){
+								_this.classList.remove("bounce");
+							});
+						}
+					}
+					
 					log("当前为原生事件: " + ev.type);
 				});
 			}
 		}
 		
+		function entry(act){
+			if(state === act){ return; }
+			state = act;
+			playArea.innerHTML = "";
+			var target = document.createElement("img");
+			target.id = "target";
+			target.draggable = false;
+			target.src = "images/cloud.png";
+			playArea.appendChild(target);
+			action[act]();
+			codeArea.innerHTML = document.querySelector(prefix + act + suffix).innerHTML.trim();
+			runhijs();
+			setTimeout(function(){
+				target.classList.add("show");
+			}, 10);
+		}
+
 		//init
 		(function(){
 			entry("rotate");

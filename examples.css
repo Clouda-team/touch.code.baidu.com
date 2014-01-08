@@ -25,7 +25,7 @@ code .comment              { color: #998; }
 	min-width : 320px;
 }
 
-@media screen and (max-width:639px){
+@media screen and (max-width:767px){
 	.viewport {
 		max-width: 600px;
 		margin: 0 auto;
@@ -33,28 +33,28 @@ code .comment              { color: #998; }
 	}   
 }
 
-@media screen and (min-width:640px){
+@media screen and (min-width:768px){
 	.viewport {
-		max-width: 786px;
+		max-width: 768px;
 		margin: 0 auto;
 		overflow: hidden;
 	}   
 }
 
 #header {
-	border-top: 3px solid #3276b1;
+	/*border-top: 3px solid #3276b1;*/
 	border-bottom: 1px solid #000;
 	background: #333;
 	box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (max-width:639px){
+@media screen and (max-width:768px){
 	#header .viewport{
-		max-width: 600px;
+		max-width: 768px;
 	}
 }
 
-@media screen and (min-width:640px){
+@media screen and (min-width:769px){
 	#header .viewport{
 		max-width: 1200px;
 	}
@@ -63,7 +63,7 @@ code .comment              { color: #998; }
 #navlist{
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
-	width: 320px;
+	width: 330px;
 	float: right;
 }
 
@@ -100,20 +100,23 @@ code .comment              { color: #998; }
 
 #nl li{
 	float: left;
-	margin-right: 1em;
-}
-
-#nl li:after{
-	content : " /";
+	margin: 0 0.5em;
+	line-height: 2em;
+	padding: 0 0.5em;
 }
 
 #nl .active{
-	color: #3276b1;
+	display: inline-block;
+	color: #fff;
+	background-color: #3276b1;
+	border-color: #285e8e;
+	-webkit-box-shadow: inset 0 -4px 0 #2a6496;
+	text-decoration: none;
+	border-radius: 3px;
 	font-weight: bold;
 }
 
 #nl li:hover{
-	color: #3276b1;
 	cursor: pointer;
 	font-weight: bold;
 }
@@ -155,7 +158,7 @@ code .comment              { color: #998; }
 	border: 1px solid #ddd;
 	-webkit-border-radius: 100px;
 	-webkit-box-shadow: 2px 2px 5px #bbb;
-	-webkit-transition: opacity .6s;
+	-webkit-transition: opacity .5s;
 	-webkit-touch-callout:none;
 	opacity: 0;
 }
@@ -172,10 +175,20 @@ code .comment              { color: #998; }
 	-webkit-animation: shake 0.2s;
 }
 
+.bounce {
+	-webkit-animation: bounce 0.4s;
+}
+
 @-webkit-keyframes shake {
 	0%, 100% {-webkit-transform: translateX(0);}
 	10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-10px);}
 	20%, 40%, 60%, 80% {-webkit-transform: translateX(10px);}
+}
+
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+	40% {-webkit-transform: translateY(-30px);}
+	60% {-webkit-transform: translateY(-15px);}
 }
 
 #logger{
