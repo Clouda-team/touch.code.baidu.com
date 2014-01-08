@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Touch.js</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style2.css" />
+    <meta name="Keywords" content="百度云手势事件库, touch, touch library, baidu cloud gesture event library, javascript, html5, transform, pinch, scale,tap"/>
+    <meta name="Description" content="百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。"/>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0" name="viewport" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="images/favicon.ico" rel="shortcut icon" type="images/x-icon"></link>
+</head>
+<body>
+    <div id="main">
+        <header id="header">
+            <div class="viewport">
+                <ul id="navlist">
+                    <li><a href="http://code.baidu.com">home</a></li>
+                    <li><a href="examples.html">examples</a></li>
+                    <li><a href="http://cloudajs.org/docs/step4_API_Documentation#h2_7">docs</a></li>
+                    <li><a href="changelog.html" class="active">changelog</a></li>
+                </ul>
+            </div>
+        </header>
+        <section id="title">
+            <div class="viewport">
+                <h1>Touch.js</h1>
+                <h3>Baidu <a href="http://cloudajs.org" target="_blank">Clouda</a> Event & Gesture Library</h3>
+            </div>
+        </section>
+        <section id="attention">
+            <div class="viewport">
+            <h3>Note</h3>
+            <h4>与v0.2.6及之前的touch.js兼容问题</h4>
+            <h4>兼容原因:</h4>
+            <p>v0.2.6及之前的touch.js不支持事件代理机制，而新的touch.js通过手势识别，事件冒泡及原生的事件对象，提供事件代理机制和自定义事件的能力，从而极大提升性能。</p>
+            <p>原有的stopPropagation会阻止原生事件冒泡，从而使手势识别失效，因此，需要手动删除/注释stopPropagation语句。麻烦各位根据自己项目的实际情况，选择性升级touch.js。</p>
+            <h4>兼容方法:</h4>
+            <p>删除/注释所有绑定中的stopPropagation方法, 如下:</p>
+            <pre>
+<code>
+touch.on('#rotation .target', 'touchstart', function(ev){ ev.startRotate();
+    ev.originEvent.preventDefault(); 
+    //ev.originEvent.stopPropagation();  //注释掉或者删掉stopPropagation方法
+});
+</code>
+            </pre>
+            </div>
+        </section>
+        <section id="changelog">
+            <div class="viewport">
+                <h3>Changelog</h3>
+                <dl>
+                    <dt><b>v0.2.10</b> date:2013-01-08</dt>
+                    <dd>支持require.js shim方式异步加载</dd>
+
+                    <dt><b>v0.2.9</b> date:2013-12-04</dt>
+                    <dd>修复touch.off接口</dd>
+
+                    <dt><b>v0.2.8</b> date:2013-11-29</dt>
+                    <dd>事件兼容性升级</dd>
+
+                    <dt><b>v0.2.7</b> date:2013-11-26</dt>
+                    <dd>添加事件代理机制</dd>
+                    <dd>添加自定义事件支持</dd>
+                    <dd>添加trigger方法</dd>
+                    <dd>支持事件冒泡</dd>
+
+                    <dt><b>v0.2.6</b> date:2013-07-09</dt>
+                    <dd>修正了在iOS5设备上scale操作在特定情况下报错的问题</dd>
+
+                    <dt><b>v0.2.4</b> date:2013-07-01</dt>
+                    <dd>修复了在iOS4系统下的文本节点会点击无效的情况</dd>
+
+                    <dt><b>v0.2.2</b> date:2013-01-17</dt>
+                    <dd>增加了live绑定事件接口</dd>
+                    <dd>解决了在有设置采样频率情况下， 有些处理函数失效问题。</dd>
+                    <dd>修改了mouseup事件不能正常绑定的问题</dd>
+                    <dd>touch.off接口支持接受元素对象参数</dd>
+
+                    <dt><b>v0.2.1</b> date:2013-01-14</dt>
+                    <dd>增加drag事件名</dd>
+                    <dd>修改swipe开关不可用的问题</dd>
+                    <dd>修改了rotation角度在pc浏览器下不连续的问题</dd>
+
+                    <dt><b>v0.2.0</b> date:2013-01-11</dt>
+                    <dd>增加了采样频率：interval</dd>
+                    <dd>更新on传递options（可选）参数的方式</dd>
+                </dl>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript" src="hijs.js"></script>
+    <script type="text/javascript">
+        runhijs();
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffffba4526d43301ecb10cceaf968f17d' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</body>
+</html>

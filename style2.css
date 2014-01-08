@@ -284,3 +284,53 @@ code .comment              { color: #998; }
 #note #nc p{
 	line-height: 1.5em;
 }
+
+#attention {
+	margin-bottom: 2em;
+}
+
+#changelog {
+	margin-bottom: 2em;
+}
+
+#attention h3,  #changelog h3{
+	text-transform: uppercase;
+	margin: 0;
+	line-height: 1.8em;
+	height: 1.8em;
+	font-size: 1.8em;
+	border-bottom: 1px solid #ccc;
+	font-family: "Courier", sans-serif;
+}
+
+#attention b{
+	font-size: 0.9em;
+}
+
+#attention p{
+	line-height: 1.5em;
+	margin: 0.5em 0;
+	padding-left: 1em;
+}
+
+#changelog dt{
+	height: 2em;
+	line-height: 2em;
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+	background: whitesmoke;
+}
+
+#changelog dt b{
+	color: #3276b1;
+}
+
+#changelog dd{
+	margin-left: 2em;
+	line-height: 2em;
+	height: 2em;
+	display: list-item;
+	list-style-type: disc;
+}
+
