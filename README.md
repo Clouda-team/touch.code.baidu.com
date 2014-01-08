@@ -1,4 +1,4 @@
-touchjs
+touchjs official site
 =======
 
-code.baidu.com
+##for more information, please visit [code.baidu.com][http://code.baidu.com].
