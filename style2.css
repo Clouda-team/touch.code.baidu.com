@@ -329,7 +329,6 @@ code .comment              { color: #998; }
 #changelog dd{
 	margin-left: 2em;
 	line-height: 2em;
-	height: 2em;
 	display: list-item;
 	list-style-type: disc;
 }
