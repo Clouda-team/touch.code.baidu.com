@@ -52,6 +52,10 @@ touch.on('#rotation .target', 'touchstart', function(ev){ ev.startRotate();
             <div class="viewport">
                 <h3>Changelog</h3>
                 <dl>
+					<dt><b>v0.2.11</b> date:2013-01-09</dt>
+                    <dd>增加代理/绑定方法对`return false`的支持, 其效果等同于同时执行`e.stopPropagation`和`e.preventDefault`方法.</dd>
+					<dd>修复代理元素为`document`时出现的bug.</dd>
+				
                     <dt><b>v0.2.10</b> date:2013-01-08</dt>
                     <dd>支持require.js shim方式异步加载</dd>
 
