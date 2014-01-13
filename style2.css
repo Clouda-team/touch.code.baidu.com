@@ -10,7 +10,7 @@ body {
 
 pre { 
 	background-color: rgba(0, 0, 0, 0.05);
-	-webkit-border-radius: 10px;
+	-webkit-border-radius: 6px;
 	padding-left: 1em;
 }
 
@@ -142,7 +142,7 @@ code .comment              { color: #998; }
 	text-decoration: underline;
 }
 
-#download h1, #features h1, #examples h1, #note h1{
+#download h1, #cdn h1, #features h1, #examples h1, #note h1{
 	font-family: "Courier", sans-serif;
 	font-size: 1.6em;
 	line-height: 1.6em;
@@ -150,7 +150,7 @@ code .comment              { color: #998; }
 }
 
 @media screen and (max-width:639px){
-	#download h1, #features h1, #examples h1, #note h1{
+	#download h1, #cdn h1, #features h1, #examples h1, #note h1{
 		text-align: center;
 		margin-left: 0;
 	}
@@ -189,6 +189,38 @@ code .comment              { color: #998; }
 
 #download #dl{
 	text-align: center;
+}
+
+#cdn {
+	margin-bottom: 1em;
+}
+
+#cdn #cdn-ctnt{
+	background-color: rgba(0, 0, 0, 0.05);
+	-webkit-border-radius: 6px;
+	padding-left: 1em;
+	height: 3em;
+	line-height: 3em;
+}
+
+#cdn-ctnt .attr{
+	color: #3E6F2A;
+}
+
+#cdn-ctnt .value{
+	color: #B23819;
+}
+
+@media screen and (min-width:768px){
+	#cdn #cdn-ctnt{
+		margin: 0.5em 4em 0.2em 3.7em
+	}
+}
+
+@media screen and (max-width:767px){
+	#cdn #cdn-ctnt{
+		margin: 0.5em 0.9em 0.2em 1.2em;
+	}
 }
 
 #intro{
