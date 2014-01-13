@@ -199,7 +199,6 @@ code .comment              { color: #998; }
 	background-color: rgba(0, 0, 0, 0.05);
 	-webkit-border-radius: 6px;
 	padding-left: 1em;
-	height: 3em;
 	line-height: 3em;
 }
 
