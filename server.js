@@ -177,6 +177,7 @@ var mime = {
           , ".yaml"  : "text/yaml"
           , ".yml"   : "text/yaml"
           , ".zip"   : "application/zip"
+		  , ".mf"    : "text/cache-manifest"
           }
 };
 
@@ -186,7 +187,7 @@ http.createServer(function(req, res){
   var path = u.pathname;
   
   if(path === '/'){
-    path = '/index3.html'
+    path = '/index.html'
   }
   
   fs.readFile('.' + path, function(err, data){

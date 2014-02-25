@@ -1,3 +1,4 @@
+/*! touchjs v0.2.13  2014-02-24 */
 'use strict';
 (function(root, factory) {
     if (typeof define === 'function' && (define.amd || define.cmd)) {
@@ -63,7 +64,7 @@ utils.forceReflow = function() {
 };
 
 utils.simpleClone = function(obj) {
-    return JSON.parse(JSON.stringify(obj));
+	return Object.create(obj);
 };
 
 utils.getPosOfEvent = function(ev) {
