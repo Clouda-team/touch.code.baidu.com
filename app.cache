@@ -4,10 +4,11 @@ examples.js
 normalize.css
 hijs.js
 images/cloud.png
+touch.min.js
 
 # Use from network if available
 NETWORK:
-touch.min.js
+
 http://hm.baidu.com/h.js
 http://hm.baidu.com/hm.gif
 
