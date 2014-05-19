@@ -48,6 +48,10 @@
 			},
 			scale : function(){
 				log("双指放大与缩小目标.");
+				
+				var target = document.getElementById("target");
+				target.style.webkitTransition = 'all ease 0.05s';
+				
 				touch.on('#target', 'touchstart', function(ev){
 					ev.preventDefault();
 				});
@@ -55,10 +59,11 @@
 				var initialScale = 1;
 				var currentScale;
 				
-				touch.on('#target', 'pinch', function(ev){  
+				touch.on('#target', 'pinchend', function(ev){
+					
 					currentScale = ev.scale - 1;
 					currentScale = initialScale + currentScale;
-					currentScale = currentScale > 2.5 ? 2.5 : currentScale;
+					currentScale = currentScale > 2 ? 2 : currentScale;
 					currentScale = currentScale < 1 ? 1 : currentScale;
 					this.style.webkitTransform = 'scale(' + currentScale + ')';
 					log("当前缩放比例为:" + currentScale + ".");
@@ -70,11 +75,12 @@
 			},
 			tap : function(){
 				log("识别tap, doubletap和hold事件.");
-				touch.on('#target', 'touchstart', function(ev){
-					ev.preventDefault();
-				});
+				// touch.on('#target', 'touchstart', function(ev){
+					// ev.preventDefault();
+				// });
 
 				touch.on('#target', 'hold tap doubletap', function(ev){
+					
 					log("当前事件为: " + ev.type);
 
 					var _this = this;
@@ -85,56 +91,54 @@
 				});
 			},
 			swipe : function(){
+				var w = 168;
+				var tw = playArea.offsetWidth;
+				
+				var lf = document.getElementById("target").offsetLeft;
+				var rt = tw - w - lf;
+				
 				log("向左, 向右swipe滑动");
 				touch.on('#target', 'touchstart', function(ev){
 					ev.preventDefault();
 				});
 
 				var target = document.getElementById("target");
-				target.style.webkitTransition = 'left ease 0.3s';
+				target.style.webkitTransition = 'all ease 0.2s';
 
 			    touch.on(target, 'swiperight', function(ev){
+					this.style.webkitTransform = "translate3d(" + rt + "px,0,0)";
 			    	log("向右滑动.");
-					this.style.left = (this.parentNode.offsetWidth - this.offsetWidth) + 'px';	
 			    });
 
 			    touch.on(target, 'swipeleft', function(ev){
 			    	log("向左滑动.");
-			    	this.style.left = '0px';
+					this.style.webkitTransform = "translate3d(-" + this.offsetLeft + "px,0,0)";
 			    });
 			},
 			drag : function(){
 				log("抓取并移动目标");
+				
 				touch.on('#target', 'touchstart', function(ev){
 				    ev.preventDefault();
 				});
 
 				var target = document.getElementById("target");
-				var initialx = target.offsetLeft - target.parentNode.offsetLeft;
-				var initialy = target.offsetTop - target.parentNode.offsetTop;
-				var maxX = target.parentNode.offsetWidth - target.offsetWidth;
-			    var maxY = target.parentNode.offsetHeight - target.offsetHeight;
 				var dx, dy;
 
 				touch.on('#target', 'drag', function(ev){
-				    
-				    dx = initialx + ev.x;
-				    dy = initialy + ev.y;
-				    
+					
+				    dx = dx || 0;
+					dy = dy || 0;
 				    log("当前x值为:" + dx + ", 当前y值为:" + dy +".");
-
-				    dx = dx < 0 ? 0 : dx;
-				    dx = dx > maxX ? maxX : dx;
-					dy = dy < 0 ? 0 : dy;
-				    dy = dy > maxY ? maxY : dy;
-
-				    this.style.left = dx + 'px';
-				    this.style.top = dy + 'px';
+					var offx = dx + ev.x + "px";
+					var offy = dy + ev.y + "px";
+					this.style.webkitTransform = "translate3d(" + offx + "," + offy + ",0)";
+					
 				});
 
 				touch.on('#target', 'dragend', function(ev){
-				    initialx += ev.x;
-				    initialy += ev.y;
+					dx += ev.x;
+				    dy += ev.y;
 				});
 			},
 			touch : function(){
