@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>Document</title>
+	<style>
+		html {
+			height : 100%;
+			width : 100%;
+			-webkit-user-select: none;
+		}
+	
+		body {
+			height : 100%;
+			width : 100%;
+			color : #333;
+			font: 14px/18px verdana;
+			padding : 0;
+			margin : 0;
+		}
+		
+		#main {
+			position : relative;
+			overflow-x: hidden;
+		}
+		
+		#mid {
+			position : absolute;
+			background : white;
+			z-index : 9;
+		}
+		
+		#lf {
+			position : absolute;
+			background : gold;
+			top : 0;
+			left : 0;
+			z-index : 1;
+		}
+		
+		#rt {
+			position : absolute;
+			top : 0;
+			right : 0;
+			background : yellowgreen;
+			z-index : 1;
+		}
+		
+		ul{
+			list-style-type : none;
+			padding : 0;
+			margin : 0;
+		}
+		
+		#list {
+			position : relative;
+			left : 0;
+			top : 0;
+		}
+		
+		#list li{
+			padding : 0.5em;
+			line-height : 1.8em;
+			border-bottom : 1px dotted #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<section id="lf"></section>
+		<section id="mid">
+			<ul id="list"></ul>
+		</section>
+		<section id="rt"></section>
+	</div>
+	<script src="touch.min.js"></script>
+	<script src="statemachine.min.js"></script>
+	<script src="move.js"></script>
+	<script src="snap.js"></script>
+</body>
+</html>
