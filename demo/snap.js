@@ -60,7 +60,6 @@ touch.on(document, "DOMContentLoaded", function(){
 		} else if(state === 2){
 			offx = -w2;
 		}
-		console.log(state, e.x, offx);
 		offx += e.x;
 		mid.style.webkitTransition =  "0ms";
 		var trans = "translateX(" + offx.toString() + "px)";
@@ -110,7 +109,16 @@ touch.on(document, "DOMContentLoaded", function(){
 
 touch.on(document, "DOMContentLoaded", function(){
 	
-	var list = document.querySelector("#list");
+	var list = document.querySelector("#list"),
+		main = document.querySelector("#main");
+	
+	var movey = function (offy){
+		list.style.webkitTransition =  "300ms";
+		setTimeout(function(){
+			var trans = "translateY(" + offy.toString() + "px)";
+			list.style.webkitTransform = trans;
+		},1);
+	};
 	
 	//data
 	var lib1 = ['polymer', 'pnotify', 'prettify','qwery', 'q.js'];
@@ -124,6 +132,18 @@ touch.on(document, "DOMContentLoaded", function(){
 		list.innerHTML = str.join("");
 	}
 	
-	render(lib1);
+	render(libs);
+	
+	
+	touch.on(main, 'drag', function(e){
+		var offy = e.y / 2;
+		if(offy > 80) { offy = 80 };
+		movey(offy);
+	});
+	
+	touch.on(main, 'dragend', function(e){
+		movey(0);
+	});
+	
 	
 });
