@@ -124,7 +124,7 @@ touch.on(document, "DOMContentLoaded", function(){
 		var dur = isWIN ? "0ms" : "200ms";
 		if(timing){
 			list.style.webkitTransitionTimingFunction = "ease";
-			dur = "800ms";
+			dur = "600ms";
 		}
 		if(timing && isWIN){
 			dur = "300ms";
