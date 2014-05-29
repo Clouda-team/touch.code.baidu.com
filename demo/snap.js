@@ -26,9 +26,10 @@ touch.on(document, "DOMContentLoaded", function(){
 	var w = screen.width,
 		w2 = w/2;
 	var state = 0;
+	var offx;
 	
 	var moveit = function (offx){
-		mid.style.webkitTransition =  "300ms";
+		mid.style.webkitTransition =  "200ms";
 		setTimeout(function(){
 			var trans = "translateX(" + offx.toString() + "px)";
 			mid.style.webkitTransform = trans;
@@ -38,7 +39,7 @@ touch.on(document, "DOMContentLoaded", function(){
 	var getInterval = function (offset){
 		
 		var n,
-			unit = 50;
+			unit = 80;
 		if( offset <= (unit * -1) ) {
 			n = -2;
 		} else if( offset > (unit * -1) && offset <= 0) {
@@ -52,7 +53,6 @@ touch.on(document, "DOMContentLoaded", function(){
 	}
 	
 	var onDragMid = function(e){
-		
 		if(state === 0){
 			offx = 0;
 		} else if(state === 1){
@@ -60,6 +60,7 @@ touch.on(document, "DOMContentLoaded", function(){
 		} else if(state === 2){
 			offx = -w2;
 		}
+		//if(Math.abs(e.x)< 20) return ;
 		offx += e.x;
 		mid.style.webkitTransition =  "0ms";
 		var trans = "translateX(" + offx.toString() + "px)";
@@ -109,15 +110,30 @@ touch.on(document, "DOMContentLoaded", function(){
 
 touch.on(document, "DOMContentLoaded", function(){
 	
+	var isWIN = (navigator.platform.indexOf('Win32') != -1);
+	
 	var list = document.querySelector("#list"),
 		main = document.querySelector("#main");
 	
-	var movey = function (offy){
-		list.style.webkitTransition =  "300ms";
+	var offy = 0;
+	var maxOffy = 120;
+	var vState = 0;
+	
+	var movey = function (offy, timing){
+		list.style.webkitTransitionTimingFunction = "ease-out";
+		var dur = isWIN ? "0ms" : "200ms";
+		if(timing){
+			list.style.webkitTransitionTimingFunction = "ease";
+			dur = "800ms";
+		}
+		if(timing && isWIN){
+			dur = "300ms";
+		}
+		list.style.webkitTransitionDuration = dur;
 		setTimeout(function(){
 			var trans = "translateY(" + offy.toString() + "px)";
 			list.style.webkitTransform = trans;
-		},1);
+		}, 10);
 	};
 	
 	//data
@@ -135,15 +151,75 @@ touch.on(document, "DOMContentLoaded", function(){
 	render(libs);
 	
 	
-	touch.on(main, 'drag', function(e){
-		var offy = e.y / 2;
-		if(offy > 80) { offy = 80 };
-		movey(offy);
+	//circle
+	var cvs = document.querySelector("#circle");
+	if (cvs.getContext) {
+		var ctx = cvs.getContext('2d');
+	}
+	
+	var unit = Math.PI * 2 / 360;
+	
+	function dragCircle(deg){
+		ctx.beginPath(); 
+		ctx.arc(15, 15, 12, 0, deg, false); 
+		ctx.lineWidth = 2; 
+		ctx.strokeStyle = "dodgerblue"; 
+		ctx.lineCap = "round";
+		ctx.stroke();
+	}
+	
+	
+	var btm = screen.availHeight - list.offsetHeight - list.childNodes.length * 3;
+	touch.on(list, 'drag', function(e){
+		
+		var x = Math.abs(e.x),
+			y = Math.abs(e.y);
+		if(y > x){
+			e.stopPropagation();
+		}
+		
+		if(vState === 0){
+			offy = 0;
+			if(e.y > maxOffy){
+				movey(maxOffy);
+				return ;
+			}
+			if(e.y > 0){
+				var deg = e.y * 3.6 * unit;
+				cvs.width = cvs.width;
+				dragCircle(deg);
+			}
+		} else if(vState === 1){
+			//offy = offy;
+		}
+		
+		movey(offy+e.y);
+		
 	});
 	
-	touch.on(main, 'dragend', function(e){
-		movey(0);
+	touch.on(list, 'dragend', function(e){
+		setTimeout(function(){
+			if(e.y > 0 && offy >= 0){
+				offy = 0;
+				movey(0, true);
+				cvs.width = cvs.width;
+				vState = 0;
+			} else {
+				offy += e.y;
+				if(offy < btm){
+					offy = btm;
+					movey(btm);
+					vState = 1;
+				} else if( offy > 0){
+					offy = 0;
+					movey(0, true);
+					vState = 0;
+				} else {
+					vState = 1;
+				}
+			}
+		},10);
+		
 	});
-	
 	
 });

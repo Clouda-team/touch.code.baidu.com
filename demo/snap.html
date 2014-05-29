@@ -28,13 +28,13 @@
 		
 		#mid {
 			position : absolute;
-			background : dodgerblue;
 			z-index : 9;
+			background : #fefefe;
 		}
 		
 		#lf {
 			position : absolute;
-			background : gold;
+			background : #fefefe;
 			top : 0;
 			left : 0;
 			z-index : 1;
@@ -44,7 +44,7 @@
 			position : absolute;
 			top : 0;
 			right : 0;
-			background : yellowgreen;
+			background : #fefefe;
 			z-index : 1;
 		}
 		
@@ -58,28 +58,98 @@
 			position : relative;
 			left : 0;
 			top : 0;
-			border-top : 1px dotted #ccc;
-			background-color : #f4f4f4;
+			background-color : #fff;
+			border: 1px solid #fff;
+			box-shadow: 0px 0px 8px #ccc;
 		}
 		
 		#list li{
 			padding : 0.5em;
 			line-height : 1.8em;
-			border-bottom : 1px dotted #ccc;
+			border-bottom : 1px dotted #ddd;
+		}
+		
+		#list li:nth-child(2n){
+			background-color : #f9f9f9;
+		}
+		
+		#loading {
+			position : absolute;
+			top : 0;
+			left : 0;
+			width : 100%;
+		}
+		
+		#circle {
+			display : block;
+			width : 30px;
+			margin : 0.5em auto;
+		}
+		
+		#loading p {
+			color : dodgerblue;
+			text-align : center;
+			margin : 0;
+		}
+		
+		#lf {
+			padding-top: 2em;
+			background : url(res/1.jpg);
+			color : #fff;
+		}
+		
+		#lf li{
+			line-height : 48px;
+			height : 48px;
+			padding-left : 1em;
+		}
+		
+		#lf li img {
+			width : 30px;
+			vertical-align : middle;
+		}
+		
+		#lf li span {
+			vertical-align : bottom;
+			font-weight : bold;
+			padding-left : 1em;
 		}
 	</style>
 </head>
 <body>
 	<div id="main">
-		<section id="lf"></section>
+		<section id="lf">
+			<ul>
+				<li>
+					<img src="res/1.png"><span>CLOCK</span>
+				</li>
+				<li>
+					<img src="res/2.png"><span>USER</span>
+				</li>
+				<li>
+					<img src="res/3.png"><span>CLASS</span>
+				</li>
+				<li>
+					<img src="res/4.png"><span>COLLECT</span>
+				</li>
+				<li>
+					<img src="res/5.png"><span>DOWNLOAD</span>
+				</li>
+			</ul>
+		</section>
 		<section id="mid">
-			<div id="loading"></div>
+			<div id="loading">
+				<canvas id="circle" width="30" height="30">
+					您的浏览器不支持canvas！
+				</canvas>
+				<p>Drag To Load</p>
+			</div>
 			<ul id="list"></ul>
 		</section>
-		<section id="rt"></section>
+		<section id="rt">
+		</section>
 	</div>
-	<script src="touch.min.js"></script>
-	<script src="statemachine.min.js"></script>
+	<script src="touch.js"></script>
 	<script src="move.js"></script>
 	<script src="snap.js"></script>
 </body>
