@@ -29,81 +29,35 @@ touch.on(document, "DOMContentLoaded", function(){
 	var offx;
 	
 	var moveit = function (offx){
-		mid.style.webkitTransition =  "200ms";
+		mid.style.webkitTransitionTimingFunction = "ease";
+		mid.style.webkitTransition =  "400ms";
 		setTimeout(function(){
 			var trans = "translateX(" + offx.toString() + "px)";
 			mid.style.webkitTransform = trans;
 		},1);
 	};
 	
-	var getInterval = function (offset){
-		
-		var n,
-			unit = 80;
-		if( offset <= (unit * -1) ) {
-			n = -2;
-		} else if( offset > (unit * -1) && offset <= 0) {
-			n = -1;
-		} else if( offset > 0 && offset <= unit) {
-			n = 1;
-		} else if(offset > unit){
-			n = 2;
-		}
-		return n;
-	}
-	
-	var onDragMid = function(e){
-		if(state === 0){
-			offx = 0;
-		} else if(state === 1){
-			offx = w2;
-		} else if(state === 2){
-			offx = -w2;
-		}
-		//if(Math.abs(e.x)< 20) return ;
-		offx += e.x;
-		mid.style.webkitTransition =  "0ms";
-		var trans = "translateX(" + offx.toString() + "px)";
-		mid.style.webkitTransform = trans;
-	};
-	
-	
-	var onDragMidEnd = function (e){
-		
-		var i = getInterval(e.x);
-		if(state === 0){
-			if(i === -2){
-				state = 2; 
-				moveit(-w2);
-			} else if ( i === 2){
-				state = 1; 
-				moveit(w2);
-			} else {
-				moveit(0);
-			}
-		} else if (state === 1){
-			if( i === -2) {
-				state = 0;
-				moveit(0);
-			} else {
-				moveit(w2);
-			}
-		} else if( state === 2){
-			if (i === 2) {
-				state = 0;
-				moveit(0);
-			} else {
-				moveit(-w2);
-			}
-		}
-		
-	}
-	
 	touch.on(mid, 'touchstart', function(e){
 		e.preventDefault();
 	});
-	touch.on(mid, "drag", onDragMid);
-	touch.on(mid, "dragend", onDragMidEnd)
+	
+	
+	touch.on("#icon", "touchstart", function(e){
+		if(state === 0){
+			state = 1;
+			moveit(w2);
+			move("#icon").rotate(180).duration(400).end();
+			e.stopImmediatePropagation();
+		}
+	});
+	
+	touch.on("#mid", "touchstart", function(e){
+		if(state === 1){
+			state = 0;
+			moveit(0);
+			move("#icon").rotate(0).duration(400).end();
+		}
+	});
 	
 });
 
@@ -113,43 +67,29 @@ touch.on(document, "DOMContentLoaded", function(){
 	var isWIN = (navigator.platform.indexOf('Win32') != -1);
 	
 	var list = document.querySelector("#list"),
-		main = document.querySelector("#main");
+		main = document.querySelector("#main"),
+		ctnt = document.querySelector("#ctnt");
 	
 	var offy = 0;
-	var maxOffy = 120;
+	var maxOffy = 100;
 	var vState = 0;
 	
 	var movey = function (offy, timing){
-		list.style.webkitTransitionTimingFunction = "ease-out";
+		ctnt.style.webkitTransitionTimingFunction = "ease-out";
 		var dur = isWIN ? "0ms" : "200ms";
 		if(timing){
-			list.style.webkitTransitionTimingFunction = "ease";
-			dur = "600ms";
+			ctnt.style.webkitTransitionTimingFunction = "ease";
+			dur = "700ms";
 		}
 		if(timing && isWIN){
 			dur = "300ms";
 		}
-		list.style.webkitTransitionDuration = dur;
+		ctnt.style.webkitTransitionDuration = dur;
 		setTimeout(function(){
 			var trans = "translateY(" + offy.toString() + "px)";
-			list.style.webkitTransform = trans;
+			ctnt.style.webkitTransform = trans;
 		}, 10);
 	};
-	
-	//data
-	var lib1 = ['polymer', 'pnotify', 'prettify','qwery', 'q.js'];
-	var lib2 = ['react', 'ractive.js', 'raphael', 'restangular', 'require.js', 'respond.js', 'reveal.js','SyntaxHighlighter', 'swfobject', 'svg.js', 'superagent', 'sugar', 'string.js','socket.io', 'snap.js', 'seajs','sass.js', 'sammy.js'];
-	var libs = lib1.concat(lib2);
-	
-	function render(libs){
-		var str = libs.map(function(item){
-			return '<li name=' + item + ' >' + item + '</li>'
-		});
-		list.innerHTML = str.join("");
-	}
-	
-	render(libs);
-	
 	
 	//circle
 	var cvs = document.querySelector("#circle");
@@ -169,8 +109,8 @@ touch.on(document, "DOMContentLoaded", function(){
 	}
 	
 	
-	var btm = screen.availHeight - list.offsetHeight - list.childNodes.length * 3;
-	touch.on(list, 'drag', function(e){
+	var btm = screen.availHeight - ctnt.offsetHeight - list.childNodes.length * 2;
+	touch.on(ctnt, 'drag', function(e){
 		
 		var x = Math.abs(e.x),
 			y = Math.abs(e.y);
@@ -184,20 +124,17 @@ touch.on(document, "DOMContentLoaded", function(){
 				movey(maxOffy);
 				return ;
 			}
-			if(e.y > 0){
-				var deg = e.y * 3.6 * unit;
-				cvs.width = cvs.width;
-				dragCircle(deg);
-			}
+			var deg = e.y * 3.6 * unit;
+			cvs.width = cvs.width;
+			dragCircle(deg);
+			
 		} else if(vState === 1){
 			//offy = offy;
 		}
-		
-		movey(offy+e.y);
-		
+		movey(offy + e.y);
 	});
 	
-	touch.on(list, 'dragend', function(e){
+	touch.on(ctnt, 'dragend', function(e){
 		setTimeout(function(){
 			if(e.y > 0 && offy >= 0){
 				offy = 0;
@@ -218,7 +155,7 @@ touch.on(document, "DOMContentLoaded", function(){
 					vState = 1;
 				}
 			}
-		},10);
+		},0);
 		
 	});
 	
