@@ -1,0 +1,18 @@
+.navigate-left:after, .navigate-right:after, .push-left:after, .push-right:after {
+position: absolute;
+top: 50%;
+display: inline-block;
+font-family: Ratchicons;
+font-size: inherit;
+line-height: 1;
+color: #bbb;
+text-decoration: none;
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+-webkit-font-smoothing: antialiased;
+}
+.navigate-right:after, .push-right:after {
+  right: 15px;
+  content: '\e826';
+}

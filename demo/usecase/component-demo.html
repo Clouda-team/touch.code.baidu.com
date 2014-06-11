@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="crema.css">
+    <script src="../third_party/require.js"></script>
+    <script src="../third_party/zepto.js"></script>
+    <script src="../third_party/underscore.js"></script>
+
+    <!-- it's blend ui here! -->
+    <script src="component-demo.js"></script>
+    <script>
+
+    </script>
+</head>
+<body>
+ <div role="layout" id="main">
+
+    <div id="header" role="header">
+    </div>
+
+    <div role="main">
+        <div role="layout" id="shelf">
+            <div id="shelf-header" role="header">
+            </div>
+
+            <div id="container" role="main">
+                <div id="shelf-content" role="layer">
+                    <a href="#layer_two">点击转入下一页</a>
+                </div>
+            </div>
+
+            <div id="footer" role="footer">
+            </div>
+        </div>
+        <div class="slider" id="myslider" style="">
+            <div class="slide-group">
+                <div class="slide"><img src="img/list.png" width="320" alt=""></div>
+                <div class="slide"><img src="http://cloudajs.org/assets/build/css/images/mx.png" width="320" alt=""></div>
+                <div class="slide"><img src="http://cloudajs.org/assets/img/baidu.png" width="320" alt=""></div>
+                <div class="slide"><img src="http://cloudajs.org/assets/img/samsung.png" width="320" alt=""></div>
+            </div>
+            <ul class="slide-position">
+                <li class="on"></li>
+                <li class=""></li>
+                <li class=""></li>
+                <li class=""></li>
+            </ul>
+        </div>
+        <div role="layout" id="index">
+            <div id="index_header" role="header">
+                <ul role="menu">
+                    <li><a href="#index">首页</a></li>
+                    <li><a href="#Layer_2">菜单二</a></li>
+                    <li><a href="#Layer_3">菜单三</a></li>
+                    <li><a href="#Layer_4">菜单四</a></li>
+                    <li><a href="#Layer_5">菜单五</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="main_footer" role="footer">
+<br />
+<br />
+<br />
+<br />
+
+        <a href="#" onclick="dialog()">dialog</a>
+        <a href="#" onclick="alert1()">alert</a>
+        <a href="#" onclick="confirm1()">confirm</a>
+        <a href="#" onclick="prompt1()">Prompt</a>
+        <a href="#" onclick="popup1()">popup</a>
+        <a href="#" onclick="popover1()" id="popover-target">popover</a>
+        <a href="#" onclick="actions1()">actions</a>
+
+    </div>
+
+</div>
+
+
+<script>
+    function dialog(){
+        requirejs(['../src/web/Dialog'], function (Dialog) {
+
+            var dialog = new Dialog({
+                title: 'title',
+                content: 'text',
+                afterContent: 'Custom content after text',
+                buttons: [{
+                    text:'Cancel',
+                    bold: true,
+                    onclick: function (e){
+                        this.close();
+                    },
+                    close:false
+                },{
+                    text:'hhe',
+                    bold: true,
+                    close:true
+                }]
+            });
+        });
+    }
+    function alert1(){
+        requirejs(['../src/web/dialog/Alert'], function (Alert) {
+            var dialog = new Alert('内容1', '标题1', "确定1");
+        });
+    }
+    function confirm1(){
+        requirejs(['../src/web/dialog/Confirm'], function (Confirm) {
+            var dialog = new Confirm(
+                'Confirm title',
+                'Confirm text',
+                function(){
+                    requirejs(['../src/web/Dialog/Alert'], function (Alert) {
+                        new Alert("你点击了OK", "");
+                    })
+                },
+                function(){
+                    requirejs(['../src/web/Dialog/Alert'], function (Alert) {
+                        new Alert("你点击了取消", "");
+                    });
+                }
+            );
+        });
+    }
+    function prompt1(){
+        requirejs(['../src/web/Dialog/Prompt'], function (Prompt) {
+            var dialog = new Prompt(
+                'Confirm title',
+                'Confirm text',
+                function(a){
+                    alert(a);
+                    requirejs(['../src/web/Dialog/Alert'], function (Alert) {
+                        new Alert("你点击了OK", "");
+                    })
+                },
+                function(){
+                    requirejs(['../src/web/Dialog/Alert'], function (Alert) {
+                        new Alert("你点击了取消", "");
+                    });
+                }
+            );
+        });
+    }
+    function popup1(){
+        requirejs(['../src/web/Popup'], function (Popup) {
+            var dialog = new Popup(
+                '.popup'
+            );
+        });
+    }
+    function closepopup1(){
+        requirejs(['../src/web/blend', '../src/web/Dialog'], function (blend, Dialog) {
+            blend.getUI(".popup").close();
+        });
+    }
+    function popover1(){
+        requirejs(['../src/web/Popover'], function (Popover) {
+            var dialog = new Popover(
+                    '.popover',
+                    "#popover-target"
+            );
+        });
+    }
+    function actions1(){
+        requirejs(['../src/web/Actions'], function (Actions) {
+            var dialog = new Actions(
+                    [
+                        [
+                            {
+                                text: 'Button 1',
+                                red: false,
+                                bold: false,
+                                onclick: function () {
+                                },
+                                label: false
+                            },
+                            {
+                                text: 'Test',
+                                red: false,
+                                bold: false,
+                                onclick: function () {
+
+                                },
+                                label: false // or true
+                            }
+                        ],
+                        [
+                            {
+                                text: '<a href="#" class="open-panel">取消</a>',
+                                red: true,
+                                bold: true,
+                                onclick: function () {
+
+                                },
+                                close : true,
+                                label: false // or true
+                            }
+                        ]
+                    ]
+            );
+        });
+    }
+</script>
+
+ <div class="popup">
+     <div class="view navbar-fixed">
+         <div class="page">
+             <div class="navbar">
+                 <div class="navbar-inner">
+                     <div class="center">Popup Title</div>
+                     <div class="right"><a href="#" class="link close-popup" onclick="closepopup1()">Done</a></div>
+                 </div>
+             </div>
+             <div class="page-content">
+                 <div class="content-block">
+                     <p>Here comes popup. You can put here anything, even independent view with its own navigation. Also not, that by default popup looks a bit different on iPhone/iPod and iPad, on iPhone it is fullscreen.</p>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse faucibus mauris leo, eu bibendum neque congue non. Ut leo mauris, eleifend eu commodo a, egestas ac urna. Maecenas in lacus faucibus, viverra ipsum pulvinar, molestie arcu. Etiam lacinia venenatis dignissim. Suspendisse non nisl semper tellus malesuada suscipit eu et eros. Nulla eu enim quis quam elementum vulputate. Mauris ornare consequat nunc viverra pellentesque. Aenean semper eu massa sit amet aliquam. Integer et neque sed libero mollis elementum at vitae ligula. Vestibulum pharetra sed libero sed porttitor. Suspendisse a faucibus lectus.</p>
+                     <p>Duis ut mauris sollicitudin, venenatis nisi sed, luctus ligula. Phasellus blandit nisl ut lorem semper pharetra. Nullam tortor nibh, suscipit in consequat vel, feugiat sed quam. Nam risus libero, auctor vel tristique ac, malesuada ut ante. Sed molestie, est in eleifend sagittis, leo tortor ullamcorper erat, at vulputate eros sapien nec libero. Mauris dapibus laoreet nibh quis bibendum. Fusce dolor sem, suscipit in iaculis id, pharetra at urna. Pellentesque tempor congue massa quis faucibus. Vestibulum nunc eros, convallis blandit dui sit amet, gravida adipiscing libero.</p>
+                     <p>Morbi posuere ipsum nisl, accumsan tincidunt nibh lobortis sit amet. Proin felis lorem, dictum vel nulla quis, lobortis dignissim nunc. Pellentesque dapibus urna ut imperdiet mattis. Proin purus diam, accumsan ut mollis ac, vulputate nec metus. Etiam at risus neque. Fusce tincidunt, risus in faucibus lobortis, diam mi blandit nunc, quis molestie dolor tellus ac enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse interdum turpis a velit vestibulum pharetra. Vivamus blandit dapibus cursus. Aenean lorem augue, vehicula in eleifend ut, imperdiet quis felis.</p>
+                     <p>Duis non erat vel lacus consectetur ultricies. Sed non velit dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel varius mi, a tristique ante. Vivamus eget nibh ac elit tempor bibendum sit amet vitae velit. Proin sit amet dapibus nunc, non porta tellus. Fusce interdum vulputate imperdiet. Sed faucibus metus at pharetra fringilla. Fusce mattis orci et massa congue, eget dapibus ante rhoncus. Morbi semper sed tellus vel dignissim. Cras vestibulum, sapien in suscipit tincidunt, lectus mi sodales purus, at egestas ligula dui vel erat. Etiam cursus neque eu lectus eleifend accumsan vitae non leo. Aliquam scelerisque nisl sed lacus suscipit, ac consectetur sapien volutpat. Etiam nulla diam, accumsan ut enim vel, hendrerit venenatis sem. Vestibulum convallis justo vitae pharetra consequat. Mauris sollicitudin ac quam non congue.</p>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+ <div class="popover popover-menu">
+     <div class="popover-angle on-top" style="left: 127px;"></div>
+     <div class="popover-inner">
+         <div class="list-block">
+             <ul>
+                 <li><a href="modals.html" class="list-button item-link">Modals</a></li>
+                 <li><a href="popover.html" class="list-button item-link">Popover</a></li>
+                 <li><a href="tabs.html" class="list-button item-link">Tabs</a></li>
+                 <li><a href="panels.html" class="list-button item-link">Side Panels</a></li>
+                 <li><a href="list-view.html" class="list-button item-link">List View</a></li>
+                 <li><a href="forms.html" class="list-button item-link">Forms</a></li>
+             </ul>
+         </div>
+     </div>
+ </div>
+
+
+</body>
+</html>

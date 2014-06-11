@@ -1,0 +1,29 @@
+.pop.in {
+    -webkit-animation-name: popIn;
+}
+
+.pop.out {
+    -webkit-animation-name: popOut;
+}
+
+@-webkit-keyframes popIn {
+    0% {
+        -webkit-transform: scale(.2);
+        opacity: 0;
+    } 
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes popOut {
+    0% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    } 
+    100% {
+        -webkit-transform: scale(.2);
+        opacity: 0;
+    }
+}
