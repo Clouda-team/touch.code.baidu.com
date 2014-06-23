@@ -1,0 +1,230 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 6px 8px 7px;
+  margin-bottom: 0; 
+  font-size: $button-font-size;
+  font-weight: $font-weight-light;
+  line-height: 1;
+  color: #333;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: top;
+  cursor: pointer;
+  background-color: $chrome-color;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  &:active,
+  &.active {
+    color: inherit;
+    background-color: #ccc;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: .6;
+  }
+}
+
+
+.btn-primary {
+  color: #fff;
+  background-color: $primary-color;
+  border: 1px solid $primary-color;
+
+  &:active,
+  &.active {
+    color: #fff;
+    background-color: darken($primary-color, 10%);
+    border: 1px solid darken($primary-color, 10%);
+  }
+}
+
+.btn-positive {
+  color: #fff;
+  background-color: $positive-color;
+  border: 1px solid $positive-color;
+
+  &:active,
+  &.active {
+    color: #fff;
+    background-color: darken($positive-color, 10%);
+    border: 1px solid darken($positive-color, 10%);
+  }
+}
+
+.btn-negative {
+  color: #fff;
+  background-color: $negative-color;
+  border: 1px solid $negative-color;
+
+  &:active,
+  &.active {
+    color: #fff;
+    background-color: darken($negative-color, 10%);
+    border: 1px solid darken($negative-color, 10%);
+  }
+}
+
+.btn-outlined {
+  background-color: transparent;
+
+  &.btn-primary {
+    color: $primary-color;
+  }
+  &.btn-positive {
+    color: $positive-color;
+  }
+  &.btn-negative {
+    color: $negative-color;
+  }
+  &.btn-primary:active,
+  &.btn-positive:active,
+  &.btn-negative:active {
+    color: #fff;
+  }
+}
+
+.btn-link {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: $primary-color;
+  background-color: transparent;
+  border: 0;
+
+  &:active,
+  &.active {
+    color: darken($primary-color, 10%);
+    background-color: transparent;
+  }
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  width: 100%;
+}
+
+
+
+.btn .badge {
+  margin: -2px -4px -2px 4px;
+  font-size: 12px;
+  background-color: rgba(0,0,0,.15);
+}
+
+.btn .badge-inverted,
+.btn:active .badge-inverted {
+  background-color: transparent;
+}
+.btn-primary:active .badge-inverted,
+.btn-positive:active .badge-inverted,
+.btn-negative:active .badge-inverted {
+  color: #fff;
+}
+
+
+.btn-block .badge {
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+}
+
+
+.btn .icon {
+  font-size: inherit;
+}
+.btn {
+  color: #929292;
+  background-color: rgba(247, 247, 247, .98);
+  border: 1px solid #929292;
+  -webkit-transition: all;
+     -moz-transition: all;
+          transition: all;
+  -webkit-transition-timing-function: linear;
+     -moz-transition-timing-function: linear;
+          transition-timing-function: linear;
+  -webkit-transition-duration: .2s;
+     -moz-transition-duration: .2s;
+          transition-duration: .2s;
+}
+.btn:active, .btn.active {
+  color: #fff;
+  background-color: #929292;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007aff;
+  border: 1px solid #007aff;
+}
+.btn-primary:active, .btn-primary.active {
+  background-color: #0062cc;
+  border: 1px solid #0062cc;
+}
+
+.btn-positive {
+  color: #fff;
+  background-color: #4cd964;
+  border: 1px solid #4cd964;
+}
+.btn-positive:active, .btn-positive.active {
+  background-color: #2ac845;
+  border: 1px solid #2ac845;
+}
+
+.btn-negative {
+  color: #fff;
+  background-color: #dd524d;
+  border: 1px solid #dd524d;
+}
+.btn-negative:active, .btn-negative.active {
+  background-color: #cf2d28;
+  border: 1px solid #cf2d28;
+}
+
+.btn-outlined {
+  background-color: transparent;
+}
+.btn-outlined.btn-primary {
+  color: #007aff;
+}
+.btn-outlined.btn-positive {
+  color: #4cd964;
+}
+.btn-outlined.btn-negative {
+  color: #dd524d;
+}
+.btn-outlined.btn-primary:active, .btn-outlined.btn-positive:active, .btn-outlined.btn-negative:active {
+  color: #fff;
+}
+
+.btn-link {
+  color: #007aff;
+  background-color: transparent;
+  border: none;
+}
+.btn-link:active, .btn-link.active {
+  color: #0062cc;
+  background-color: transparent;
+}
+
+.btn .badge {
+  background-color: rgba(0, 0, 0, .15);
+}
+.btn .badge.badge-inverted {
+  background-color: transparent;
+}
+.btn:active .badge {
+  color: #fff;
+}

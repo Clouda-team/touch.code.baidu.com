@@ -1,0 +1,64 @@
+/* Flip Left */
+.flipleft {
+    -webkit-backface-visibility: hidden;
+}
+
+.flipleft.in {
+    -webkit-animation-name: flipLeftIn;
+}
+
+.flipleft.out {
+    -webkit-animation-name: flipLeftOut;
+}
+
+@-webkit-keyframes flipLeftIn {
+    0% {
+        -webkit-transform: rotateY(180deg) scale(.8);
+    } 
+    100% {
+        -webkit-transform: rotateY(0deg) scale(1);
+    }
+}
+
+@-webkit-keyframes flipLeftOut {
+    0% {
+        -webkit-transform: rotateY(0deg) scale(1);
+    } 
+    100% {
+        -webkit-transform: rotateY(-180deg) scale(.8);
+    }
+}
+
+
+
+/* Flip Right */
+
+.flipright {
+    -webkit-backface-visibility: hidden;
+}
+
+.flipright.in {
+    -webkit-animation-name: flipRightIn;
+}
+
+.flipright.out {
+    -webkit-animation-name: flipRightOut;
+}
+
+@-webkit-keyframes flipRightIn {
+    0% {
+        -webkit-transform: rotateY(-180deg) scale(.8);
+    } 
+    100% {
+        -webkit-transform: rotateY(0deg) scale(1);
+    }
+}
+
+@-webkit-keyframes flipRightOut {
+    0% {
+        -webkit-transform: rotateY(0deg) scale(1);
+    } 
+    100% {
+        -webkit-transform: rotateY(180deg) scale(.8);
+    }
+}

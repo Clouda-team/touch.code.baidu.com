@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>api test</title>
+    <script src="third_party/zepto.js"></script>
+    <script src="third_party/require.js"></script>
+</head>
+<style>
+*{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height:100%;
+    max-width:100%;
+    overflow: hidden;
+}
+#QingApp{
+
+}
+#Head{
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    height:40px;
+    border-top: rgb(60, 156, 118) solid 1px;
+    border-bottom: rgb(26, 128, 85) solid 1px;
+    color: rgb(255, 255, 255);
+    background: rgb(30, 152, 102);
+}
+#Menu{
+    background: rgb(246, 246, 246);
+    height: 42px;
+    border-top: rgb(215, 215, 215) 1px solid;
+    border-bottom: rgb(215, 215, 215) 1px solid;
+    border-bottom: 1px solid rgb(0, 80, 232);
+background: -webkit-gradient(linear,left top,left bottom,from(rgb(0, 113, 233)),to(rgb(0, 90, 231)));
+    display: box;
+    display: -webkit-box;
+}
+#Menu>a{
+    -webkit-box-flex: 1;
+    display:block;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    color:#fff;
+    position:relative;
+    font-weight: bolder;
+}
+#Menu>a[role='tap']{
+    
+}
+#Menu>a>b{
+    display:none;
+}
+.qing-layer{
+    position:absolute;
+    top:0;
+    left:0;
+    max-height:100%;
+    width:100%;
+    -webkit-backface-visibility: hidden;
+    background:#f00;
+    display:none;
+}
+#Menu>a.cur{
+background: -webkit-gradient(linear,left top,left bottom,from(rgb(3, 76, 176)),to(rgb(6, 88, 220)));
+color: rgb(255, 255, 255);
+border-bottom: 1px solid rgb(0, 95, 234);
+}
+
+#Menu>a.cur>b{
+    display:block;
+    position: absolute;
+    background-color: rgb(81, 171, 255);
+    top: 32px;
+    height: 2px;
+    width: 34px;
+    left: 50%;
+    margin-left: -17px;
+    z-index: 100;
+}
+#log{
+    position:absolute;
+    top:0;
+    right:0;
+    color:#fff;
+    font-size: 12px;
+    z-index: 999;
+}
+#log1{
+    position:absolute;
+    top:12px;
+    right:0;
+    color:#fff;
+    font-size: 12px;
+    z-index: 999;
+}
+#log2{
+    position:absolute;
+    top:24px;
+    right:0;
+    color:#fff;
+    font-size: 12px;
+    z-index: 999;
+}
+</style>
+<body>
+<div id="QingApp">
+    <!-- <div id="log"></div>
+    <div id="log1"></div>
+    <div id="log2"></div> -->
+    <div id="Menu">
+        <a href="index_1.html" class="cur" data-index="6" role="tap">焦点<b></b></a>
+        <a  href="index_2.html" data-index="7" role="tap">软件<b></b></a>
+        <a  href="news.html" data-index="8" role="tap">游戏<b></b></a>
+        <!-- <a class="se" href="http://fedev.baidu.com/~zhangjianguang/lightapp/usecase/index_3.html" data-index="index_3"  role="link">搜索</a> -->
+    </div>
+</div>
+<script src="showcase/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>测试layer页面</title>
+    <link rel="stylesheet" href="demo.css">
+    <script src="../third_party/require.js"></script>
+</head>
+
+<body>
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="views">
+        <div class="view">
+            
+            <div class="pages">
+                <div class="page page-on-center">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="center">Touch Demo</div>
+                        </div>
+                    </div>
+                    <div class="page-content">
+						<div id="test">
+							<div id="loading">
+								<div id="arrow"></div>
+							</div>
+							<div class="list-block">
+								<ul id="list">
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>为什么有传闻中国政府要推动银行弃用 IBM 高端服务器？</span><img src="img/2.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>如何看待无印良品（MUJI）把长板凳卖到 1000 块钱？</span><img src="img/3.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>如何评价山田洋次 2014 年的电影《小小的家》？</span><img src="img/4.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>因扎吉出任米兰主教练前景如何？</span><img src="img/5.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>在京沪穗一辈子租房住现实吗？</span><img src="img/6.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>如何看待女作家六六的这条微博？</span><img src="img/7.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>在京沪穗一辈子租房住现实吗？</span><img src="img/8.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>二十几岁的男生，想要的太多，怎么办？</span><img src="img/9.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>为什么欧美车开起来有“稳”的感觉，而日系车会感觉“飘”？</span><img src="img/10.png" alt=""></a>
+									</li>
+									<li>
+										<a href="sub/list.html" class="item-link item-content"><span>比较一下商业产品经理和用户产品经理？</span><img src="img/11.png" alt=""></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</body>
+<script>
+requirejs(['../third_party/zepto','../src/web/blend','../src/web/Layer', '../third_party/touch'], function (nothing, main, layer, touch) {
+    
+    window._layer = '';
+	
+	var lb = document.querySelector(".list-block");
+	var ld = document.querySelector("#loading");
+	var test = document.querySelector("#test");
+	var loading = document.querySelector("#loading");
+	var arrow = document.querySelector("#arrow");
+	
+	/*
+	var moveTest = function(y, delay, ms) {
+		delay = delay || 0;
+		ms = ms || 0;
+		setTimeout(function(){
+			if(ms) {
+				test.style.webkitTransitionDuration = ms + "ms";
+			}
+			test.style.webkitTransform = "translateY(" + y + "px)";
+		}, delay);
+		
+	}
+	
+	var PD = function(e){ e.preventDefault(); }
+	*/
+	
+	touch.on(test, "dragstart", function(e){
+		
+	});
+	
+	touch.on(test, "drag", function(e){
+		if(e.y > 0){
+			if(e.y/2 > 70){
+				arrow.classList.add("up");
+			} else {
+				arrow.classList.remove("up");
+			}
+		}
+	});
+	
+	touch.on(test, "dragend", function(e){
+		
+		
+		
+	});
+	
+    $(document).click(function(e){
+        
+        var $t = $(e.target).closest('a');
+        if (!$t.length) return true;
+        if ($t.hasClass("back")) { //有class name back 则 后退，否则，进入
+            _layer.out();
+            return false;
+        }
+        e.preventDefault();
+        _layer && _layer.destroy();
+        _layer = new layer({
+            "id":"info",
+            "url": $t.attr('href'),
+            "active":true
+            ,"afterrender":function(){
+                console.log("afterrender");
+                /*alert("afterrender:"+this.id+"_event");
+                alert(location.href);*/
+            }
+            ,"onload":function(event){
+                console.log("onload");
+                /*alert(event['origin']);
+                alert("onload:"+this.id+"_event");
+                alert(location.href);*/
+            }
+            ,"changeUrl":function(event){
+                // console.log("onload");
+                console.log(event['url'])
+            }
+        });
+		
+    });
+});
+</script>
+</html>

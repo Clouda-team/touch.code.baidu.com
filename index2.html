@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="Keywords" content="百度云手势事件库, touch, touch library, baidu cloud gesture event library, javascript, html5, transform, pinch, scale,tap"/>
+    <meta name="Description" content="百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。"/>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1.0,minimum-scale=1.0" name="viewport" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="images/favicon.ico" rel="shortcut icon" type="images/x-icon"></link>
+</head>
+<body>
+    <div id="main">
+        <header id="header">
+			<div class="viewport">
+				<h1>Touch.js</h1>
+				<h3>Baidu Cloud Event & Gesture Library</h3>
+			</div>
+        </header>
+        <section id="intro">
+            <ul id="features" class="viewport">
+                <li>
+                    <img src="images/design.png" />
+                    <span>无侵入设计,</span>
+                    <span>与现有代码与框架共存</span>
+                </li>
+                <li>
+                    <img src="images/excellent.png" />
+                    <span>原生出色的加速度感知与缓动效果,</span>
+                    <span>优秀的单指旋转手势</span>
+                </li>
+                <li>
+                    <img src="images/fast.png" />
+                    <span>基于原生事件,</span>
+                    <span>支持事件代理, 性能更好</span>
+                </li>
+                <li>
+                    <img src="images/easy.png" />
+                    <span>极简的API,</span>
+                    <span>秒速上手, 玩转手势</span>
+                </li>
+            </ul>
+        </section>
+		<section id="demo">
+			<nav id="nav">
+				<div class="viewport">
+					<ul id="navlist">
+						<li><i class="rotate"></i>Rotate</li>
+						<li><i class="scale"></i>Scale</li>
+						<li><i class="tap"></i>Tap & Hold</li>
+						<li><i class="swipe"></i>Swipe</li>
+						<li><i class="drag"></i>Drag</li>
+						<li><i class="touch"></i>Touch</li>
+					</ul>
+				</div>
+			</nav>
+			<div id="play">
+				<img class="target" src="images/cloud.png" />
+			</div>
+		</section>
+		<section id="code">
+			<pre>
+<code>
+//rotate
+var angle = 30;
+touch.on('.target', 'touchstart', function(ev){
+    ev.startRotate();
+    ev.originEvent.preventDefault();
+});
+
+touch.on('.target', 'rotate', function(ev){
+    var totalAngle = angle + ev.rotation;
+    if(ev.fingerStatus === 'end'){
+        angle = angle + ev.rotation;
+    }
+    this.style.webkitTransform = 'rotate(' + totalAngle + 'deg)';
+});
+</code>
+               </pre>
+		</section>
+		<footer id="footer">
+			<p>百度云手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能,是近年来百度移动云事业部内部广泛使用的开发工具.</p>
+			<p>本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。</p>
+		</section>
+	</div>
+    <script type="text/javascript" src="hijs.js"></script>
+    <script type="text/javascript" src="touch-0.2.10.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+        runhijs();
+    </script>
+</body>
+</html>

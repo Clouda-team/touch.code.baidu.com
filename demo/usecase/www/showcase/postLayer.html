@@ -1,0 +1,182 @@
+<!doctype html>
+<html class=" overthrow-enabled">
+<!--STATUS OK-->
+<head>
+    <meta name="keywords" content="无弹窗阅读,最新章节">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon-precomposed" href="http://tb2.bdstatic.com/tb/mobile/sglobal/img/touch57X57_618a2f2.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://tb2.bdstatic.com/tb/mobile/sglobal/img/touch114X114_1c18b8c.png">
+    <title>百度贴吧</title>
+    <link rel="stylesheet" href="http://tb2.bdstatic.com/tb/mobile/sglobal/style/common_956cea2.css">
+    <link rel="stylesheet" href="http://tb2.bdstatic.com/??/tb/mobile/frs_global_resource_f02a395.css,/tb/mobile/pic_free_mode_adapter_13d1f81.css,/tb/mobile/light_search_f3e356e.css,/tb/mobile/blue_kit_btns_1d488b0.css,/tb/mobile/spinner_d8700c1.css,/tb/mobile/forum_spinner_ad9196a.css,/tb/mobile/info_notice_0ada64a.css,/tb/mobile/mode_setup_7fb73e7.css,/tb/mobile/light_top_bar_488ced4.css,/tb/mobile/light_sign_arrow_10ce2f5.css,/tb/mobile/light_cool_game_4a46a55.css,/tb/mobile/light_top_forum_8d13274.css,/tb/mobile/search_person_1991ab7.css,/tb/mobile/pager_fac9553.css,/tb/mobile/light_voice_710046a.css,/tb/mobile/light_frslist_content_fab375a.css,/tb/mobile/light_see_index_d40c159.css,/tb/mobile/footer_ab767b0.css,/tb/mobile/footer_be50579.css,/tb/mobile/light_post_entrance_b059cc6.css,/tb/mobile/float_layer_3f47142.css,tb/mobile/spostor/component/audio_recoder/audio_recoder_79dab91c.css,tb/mobile/spostor/component/at/at_a489dad3.css,tb/mobile/spostor/component/voice_btn/voice_btn_cb8da108.css,tb/mobile/spostor/component/at_btn/at_btn_31d6cfe0.css,tb/mobile/spostor/component/prefix_editor_title/prefix_editor_title_f79fb2a3.css,tb/mobile/spostor/component/upload_pic/upload_pic_45215593.css,tb/mobile/spostor/component/interest_smiley_btn/interest_smiley_btn_31d6cfe0.css,tb/mobile/spostor/component/light_smile/light_smile_43ca4c28.css,tb/mobile/spostor/component/smile/smile_c09f627a.css">
+    <link rel="stylesheet" href="http://tb2.bdstatic.com/??tb/mobile/spostor/component/captcha/captcha_2c91c0bf.css,tb/mobile/spostor/component/device_info_area/device_info_area_31d6cfe0.css,tb/mobile/spostor/component/light_media_bar_btns/light_media_bar_btns_4c94ca76.css,tb/mobile/spostor/component/media_bar_btns/media_bar_btns_6b1dcc8f.css,tb/mobile/spostor/component/editor/editor_4f5771d0.css,tb/mobile/spostor/widget/light_frs_main_postor/light_frs_main_postor_22436e84.css,tb/mobile/spostor/service/light_frs_postor/light_frs_postor_11774cb6.css,/tb/mobile/light_frs_a758810.css,/tb/mobile/user_icons_31d3c03.css">
+    <script src="../third_party/require.js"></script>
+</head>
+<style>
+/* .j_editor_bottom_panel {
+    -webkit-box-flex:1;
+    position:absolute;
+    bottom:0;
+} */
+</style>
+<body class="ue_revision portrait">
+    <div class="j_ui_floatlayer ui_floatlayer frs_poster_layer" style="top: 0px; left: 0px; -webkit-transform: none;">
+        <div class="blue_kit blue_kit_top j_postor_blue_head">
+            <div class="blue_kit_left" id="LayerBack">
+                <a class="blue_kit_btn_return blue_kit_btn j_postor_blue_kit_btn_return" href="javascript:;"></a>
+            </div>
+            <span class="blue_kit_title">留言</span>
+            <div class="blue_kit_right" id="LayerClose"><a class="blue_kit_btn j_postor_blue_kit_btn j_submit_btn" href="javascript:;">发布</a>
+            </div>
+        </div>
+        <div id="j_main_editor_container" class="editor_panel overthrow">
+            <div class="j_editor editor">
+                <div class="j_editor_title_panel editor_title_panel">
+                    <input id="Text" type="text" value="" placeholder="标题（必填）" class="j_editor_input editor_input editor_title" >
+                </div>
+                <div class="j_editor_content_panel editor_content_panel" style="height:auto">
+                    <div class="j_savedraft_panel savedraft_panel"></div>
+                    <div class="lay_hide">
+                        <div class="j_lay_top lay_top"></div>
+                        <textarea placeholder="" style="height: 100px; width: 100%;max-height:none" class="j_editor_content editor_input editor_content"></textarea>
+                    </div>
+                </div>
+                <div class="j_editor_bottom_panel editor_bottom_panel clearfix">
+                    <div class="editor_btn_list">
+                        <div class="j_media_bar light_media_bar">
+                            <div class="j_voice_btn_panel light_voice_btn_panel"></div>
+                            <div class="j_smile_btn_panel light_smile_btn_panel">
+                                <a href="#" class="j_smile_btn smile_btn smile_enable">
+                                    <span class="media_bar_btn_text">表情</span>
+                                </a>
+                            </div>
+                            <div class="j_pic_btn_panel light_pic_btn_panel" style="display: inline-block;">
+                                <a class="upload-block enable" href="javascript:;">
+                                    <span class="media_bar_btn_text">照片</span>
+                                    <input type="file" name="pic" id="pic" accept="image/*" class="upload-input" style="pointer-events: none;">
+                                    <span class="upload-block-count" style="display: none;"></span>
+                                </a>
+                                <a class="upload-block multi enable" href="javascript:;">
+                                    <span class="media_bar_btn_text">图片</span>
+                                    <input class="upload-input" type="file" accept="image/*" multiple="multiple" style="opacity: 0; pointer-events: none;">
+                                </a>
+                            </div>
+                            <div class="j_at_btn_panel light_at_btn_panel">
+                                <a class="at_btn at_btn_enabled" href="javascript:;">
+                                    <span class="media_bar_btn_text">@好友</span>
+                                </a>
+                            </div>
+                            <div class="j_interest_smiley_btn_panel light_interest_smiley_btn_panel"></div>
+                        </div>
+                        <div class="j_submit_btn_panel submit_btn_panel"></div>
+                    </div>
+                    <div class="j_post_tip post_tip"></div>
+                    <div class="j_user_hide post_tip"></div>
+                    <div class="j_no_un_tip no_un_tip"></div>
+                    <div class="j_device_info device_info"></div>
+                    <div class="j_captcha_panel captcha_panel">
+                        <div class="old_vcode_wrapper" style="display:none;">
+                            <span class="captcha_text">请输入验证码:</span>
+                            <div>
+                                <input type="text" class="j_captcha_input captcha_input" style="pointer-events: none;">
+                                <a href="#">
+                                    <img class="captcha_img j_captcha_img" src="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="vcode_panel_outer_wrapper vcode_panel_id6222">
+                            <div class="vcode_panel_inner_wrapper">
+                                <div class="vcode_error_tip"></div>
+                                <div class="vcode_panel_inner_upper">
+                                    <div class="upper_id_wrapper">
+                                        <div class="upper_id_inner_wrapper">
+                                            <div class="upper_fake_input">
+                                                <div order="" class="upper_fake_placeholder vcode_baseImg_small"></div>
+                                                <div order="" class="upper_fake_placeholder vcode_baseImg_small"></div>
+                                                <div order="" class="upper_fake_placeholder vcode_baseImg_small"></div>
+                                                <div order="" class="upper_fake_placeholder vcode_baseImg_small"></div>
+                                            </div>
+                                            <a class="j_vcode_delete upper_delete">
+                                                <span class="upper_delete_img"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="j_vcode_target_img upper_target_img vcode_baseImg_middle"></div><a class="j_vcode_submit upper_submit upper_submit_disable" href="#">确认</a>
+                                    <div class="j_vcode_tip upper_tip">点击框内文字输入图中
+                                        <span class="PIN_red">汉字或拼音</span>对应汉字</div>
+                                    <!--div class="j_vcode_toggle_type toggle_type">返回旧版</div-->
+                                    <input type="hidden" class="j_captcha_input captcha_input" style="pointer-events: none;">
+                                </div>
+                                <div class="vcode_panel_grids_wrapper">
+                                    <div class="grids_line_wrapper">
+                                        <a data="00000000" class="grid_button" order="0">
+                                            <span class="grid_img vcode_baseImg_big vbp_0"></span>
+                                        </a>
+                                        <a data="00010000" class="grid_button" order="1">
+                                            <span class="grid_img vcode_baseImg_big vbp_1"></span>
+                                        </a>
+                                        <a data="00020000" class="grid_button" order="2">
+                                            <span class="grid_img vcode_baseImg_big vbp_2"></span>
+                                        </a>
+                                    </div>
+                                    <div class="grids_line_wrapper">
+                                        <a data="00000001" class="grid_button" order="3">
+                                            <span class="grid_img vcode_baseImg_big vbp_3"></span>
+                                        </a>
+                                        <a data="00010001" class="grid_button" order="4">
+                                            <span class="grid_img vcode_baseImg_big vbp_4"></span>
+                                        </a>
+                                        <a data="00020001" class="grid_button" order="5">
+                                            <span class="grid_img vcode_baseImg_big vbp_5"></span>
+                                        </a>
+                                    </div>
+                                    <div class="grids_line_wrapper">
+                                        <a data="00000002" class="grid_button" order="6">
+                                            <span class="grid_img vcode_baseImg_big vbp_6"></span>
+                                        </a>
+                                        <a data="00010002" class="grid_button" order="7">
+                                            <span class="grid_img vcode_baseImg_big vbp_7"></span>
+                                        </a>
+                                        <a data="00020002" class="grid_button" order="8">
+                                            <span class="grid_img vcode_baseImg_big vbp_8"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="j_light_smile_box_panel light_smile_box_panel" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+<script>
+require(['../third_party/zepto','../src/hybrid/blend','../src/hybrid/Layer'], function (nothing, main, layer,LayerGroup) {
+    var host = "http://fedev.baidu.com/~zhangjianguang/lightapp/showcase/";
+    var layer = main.api.layer;
+    $('#LayerBack').click(function(e){
+        e.preventDefault();
+        //layer.postMessage(location.href,"top");
+        layer.back();
+    });
+    
+    $('#LayerClose').click(function(e){
+        e.preventDefault();
+        layer.postMessage($("#Text").val(),false);
+        layer.destroy();
+    });
+    //alert($('#Text')[0]);
+    window.lc_bridge.addComponent("instId", 'UIBase', 'com.baidu.lightui.component.keyboard.KeyboradHelper', "{left:10, top:10, width:10, height:10,fixed:false}");
+    $('#Text')[0].focus();
+    window.lc_bridge.componentExecuteNative("instId", 'show', '');
+});
+var keyH=0;
+window.keyEvent = function(keyH){
+    keyH = keyH;
+}
+</script>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Timer</title>
+	<meta name="viewport" content="width=480px, initial-scale=0.7, maximum-scale=0.7">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<style>
+		html {
+			background : #fcfcfc;
+		}
+	
+		#timer {
+			position : absolute;
+			-webkit-user-select : none;
+		}
+	
+		#panel {
+			position : absolute;
+			width : 338px;
+			height : 353px;
+			background : url("img/blank_clock.png") no-repeat;
+			opacity : 0;
+		}
+		
+		#degree {
+			position : absolute;
+			width : 253px;
+			height : 253px;
+			background : url("img/degree.png") no-repeat;
+			left : 42.5px;
+			top : 50px;
+		}
+		
+		#d15 {
+			position : absolute;
+			right : 8px;
+			top : 110.5px;
+		}
+		
+		#d60 {
+			position : absolute;
+			left : 110.5px;
+			top : 8px;
+		}
+		
+		#handcenter {
+			position : absolute;
+			top : 99.5px;
+			left : 99.5px;
+		}
+		
+		#hand {
+			position : absolute;
+			left : 105.5px;
+			top : 22.5px;
+			-webkit-transform-origin-x: 21px;
+			-webkit-transform-origin-y: 104px;
+			-webkit-transform : rotate(-60deg);
+			opacity : 0;
+		}
+		
+		#ruler {
+			position : absolute;
+			top : -281px;
+			left : 340px;
+			width : 103px;
+			height : 605px;
+			background : url("img/ruler.png") no-repeat;
+			cursor : pointer;
+			opacity : 0;
+		}
+		
+		#display {
+			position : absolute;
+			width : 3em;
+			height : 1.2em;
+			left: 134px;
+			bottom : -100px;
+			opacity : 0;
+			font-size: 1.6em;
+			font-family: "Hiragingo Sans GB", Helvetica, "Lucida Grande", Verdana, sans-serif;
+			color : #4B4B4B;
+			letter-spacing : 2px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<div id="timer">
+			<div id="panel">
+				<div id="degree">
+					<img id="d15" src="img/d15.png" draggable="false" />
+					<img id="d60" src="img/d60.png" draggable="false" />
+					<img id="hand" src="img/hour_hand.png" draggable="false" />
+					<img id="handcenter" src="img/hand_center.png" draggable="false" />
+				</div>
+				<div id="display">00:00</div>
+			</div>
+			<div id="ruler"></div>
+		</div>
+	</div>
+	<script src="touch.min.js"></script>
+	<script src="move.js"></script>
+	<script src="timer.js"></script>
+	<script>
+		
+		touch.on(document, "DOMContentLoaded", function(){
+			var dur = "0.8s";
+			move("#panel").set("opacity","1").duration(dur).end()
+			move("#hand").rotate(0).set("opacity","1").duration(dur).end();
+			move("#ruler").set("top","-481px").set("opacity","1").duration(dur).end();
+			
+		});
+		
+		touch.on(document, "DOMContentLoaded", function(){
+			
+			var recY = 0;
+			var maxY = 470, minY = 0;
+			var unit = 470 / 360;
+			
+			var hand = document.querySelector("#hand"),			//panel
+				ruler = document.querySelector("#ruler"),		//ruler
+				display = document.querySelector("#display");	//timer
+			
+			function range(value, max, min){
+				if(value >= max) { value = max; }
+				if(value < min){ value = min; }
+				return value;
+			};
+			
+			function renderPanel(){
+				var degree; 
+				if(arguments.length === 1){
+					degree = arguments[0]/unit;
+				} else {
+					degree = arguments[0]*6 + arguments[1]*0.1;
+				}
+				var rot = "rotate(" + degree + "deg)";
+				hand.style.webkitTransform = rot;
+			};
+			
+			function renderTimer(){
+				
+				var m, s;
+				if(arguments.length === 1){
+					var t = arguments[0] * 10 / unit;
+					m = parseInt(t/60);
+					s = 0;
+				}else{
+					m = arguments[0];
+					s = arguments[1];
+				}
+				m = m < 10 ? "0" + m : m;
+				s = s < 10 ? "0" + s : s;
+				display.innerHTML = m + ":" + s;
+				return [m,s];
+			};
+			
+			function renderRuler(){
+				
+				var offy;
+				if(arguments.length === 1){
+					offy = arguments[0];
+				}else{
+					offy = arguments[0] * unit * 6 + arguments[1] * unit * 0.1;
+				}
+				ruler.style.webkitTransform = "translate3d(0," + offy + "px,0)";
+				
+			};
+			
+			function render(){
+				if(arguments.length === 1){
+					var offy = arguments[0];
+					renderRuler(offy);
+					renderPanel(offy);
+					renderTimer(offy);
+				} else {
+					var m = arguments[0],
+						s = arguments[1];
+					renderRuler(m,s);
+					renderPanel(m,s);
+					renderTimer(m,s);
+				}
+				
+			}
+			
+			//timer instance
+			var t;
+			
+			//drag
+			touch.on(ruler, 'touchstart', function(e){
+				e.preventDefault();
+			});
+			
+			touch.on(ruler,'dragstart', function(e){
+				
+				if(t){ t.reset(); }
+				
+			});
+			
+			touch.on(ruler,'drag', function(e){
+				
+				var offy = range(recY + e.y, maxY, minY);
+				render(offy);
+				
+			});
+			
+			touch.on(ruler, 'dragend', function(e){
+				recY = recY + e.y;
+				recY = range(recY, maxY, minY);
+				
+				//show timer and start it
+				move("#display").set("bottom","-50px").set("opacity","1").duration('0.5s').end();
+				var time = renderTimer(recY);
+				t = new Timer(time[0], time[1]);
+				t.start(render);
+				
+			});
+			
+		});
+		
+	</script>
+</body>
+</html>

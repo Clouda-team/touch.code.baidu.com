@@ -1,0 +1,16 @@
+CACHE MANIFEST
+examples.css
+examples.js
+normalize.css
+hijs.js
+images/cloud.png
+touch.min.js
+
+# Use from network if available
+NETWORK:
+
+http://hm.baidu.com/h.js
+http://hm.baidu.com/hm.gif
+
+# Fallback content
+FALLBACK:

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html manifest="app.cache">
+<head>
+    <meta charset="UTF-8">
+    <title>Touch.js Examples</title>
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="examples.css" />
+    <meta name="Keywords" content="百度云手势事件库, touch, touch library, baidu cloud gesture event library, javascript, html5, transform, pinch, scale,tap"/>
+    <meta name="Description" content="百度云 手势事件库实现了Web App在触屏设备上的手势识别与事件管理功能。是近年来百度移动云事业部内部广泛使用的开发工具，本次开放旨在帮助更多开发者学习和开发出优秀的Web App产品。"/>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0" name="viewport" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="images/favicon.ico" rel="shortcut icon" type="images/x-icon"></link>
+</head>
+<body>
+    <div id="main">
+        <header id="header">
+            <div class="viewport">
+                <ul id="navlist">
+                    <li><a href="http://code.baidu.com">home</a></li>
+                    <li><a href="examples.html" class="active">examples</a></li>
+                    <li><a href="http://cloudajs.org/docs/step4_API_Documentation#h2_7">docs</a></li>
+                    <li><a href="changelog.html">changelog</a></li>
+                </ul>
+            </div>
+        </header>
+        <nav id="nav">
+            <div class="viewport">
+                <ul id="nl">
+                    <li>Rotate</li>
+                    <li>Scale</li>
+                    <li>Tap & Hold</li>
+                    <li>Swipe</li>
+                    <li>Drag</li>
+                    <li>Touch</li>
+                </ul>
+            </div>
+        </nav>
+        <section id="play">
+            <div id="playarea"></div>
+        </section>
+        <section id="log">
+            <div class="viewport">
+                <div id="logger">
+                    logs here
+                </div>
+            </div>
+        </section>
+        <section id="code">
+            <div class="viewport">
+                
+            </div>
+        </section>
+    </div>
+
+
+    <div id="codes">
+        <div id="rotate-code">
+<pre>
+<code>
+//rotation
+var angle = 0;
+touch.on('#target', 'touchstart', function(ev){
+    ev.startRotate();
+    ev.preventDefault();
+});
+
+touch.on('#target', 'rotate', function(ev){
+    var totalAngle = angle + ev.rotation;
+    if(ev.fingerStatus === 'end'){
+        angle = angle + ev.rotation;
+    }
+    this.style.webkitTransform = 'rotate(' + totalAngle + 'deg)';
+});
+</code>
+</pre>
+        </div>
+        <div id="scale-code">
+<pre>
+<code>
+var target = document.getElementById("target");
+target.style.webkitTransition = 'all ease 0.05s';
+
+touch.on('#target', 'touchstart', function(ev){
+	ev.preventDefault();
+});
+
+var initialScale = 1;
+var currentScale;
+
+touch.on('#target', 'pinchend', function(ev){
+	currentScale = ev.scale - 1;
+	currentScale = initialScale + currentScale;
+	currentScale = currentScale > 2 ? 2 : currentScale;
+	currentScale = currentScale < 1 ? 1 : currentScale;
+	this.style.webkitTransform = 'scale(' + currentScale + ')';
+	log("当前缩放比例为:" + currentScale + ".");
+});
+
+touch.on('#target', 'pinchend', function(ev){
+	initialScale = currentScale;
+});
+</code>
+</pre>      
+        </div>
+        <div id="tap-code">
+<pre>
+<code>
+touch.on('#target', 'hold tap doubletap', function(ev){
+    //console.log(ev.type);
+});
+</code>
+</pre>      
+        </div>
+        <div id="swipe-code">
+<pre>
+<code>
+touch.on('#target', 'touchstart', function(ev){
+	ev.preventDefault();
+});
+
+var target = document.getElementById("target");
+target.style.webkitTransition = 'all ease 0.2s';
+
+touch.on(target, 'swiperight', function(ev){
+	this.style.webkitTransform = "translate3d(" + rt + "px,0,0)";
+	log("向右滑动.");
+});
+
+touch.on(target, 'swipeleft', function(ev){
+	log("向左滑动.");
+	this.style.webkitTransform = "translate3d(-" + this.offsetLeft + "px,0,0)";
+});
+</code>
+</pre>   
+</div>
+<div id="drag-code">
+<pre>
+<code>
+touch.on('#target', 'touchstart', function(ev){
+	ev.preventDefault();
+});
+
+var target = document.getElementById("target");
+var dx, dy;
+
+touch.on('#target', 'drag', function(ev){
+	dx = dx || 0;
+	dy = dy || 0;
+	log("当前x值为:" + dx + ", 当前y值为:" + dy +".");
+	var offx = dx + ev.x + "px";
+	var offy = dy + ev.y + "px";
+	this.style.webkitTransform = "translate3d(" + offx + "," + offy + ",0)";
+});
+
+touch.on('#target', 'dragend', function(ev){
+	dx += ev.x;
+	dy += ev.y;
+});
+</code>
+</pre>
+</div>
+<div id="touch-code">
+<pre>
+<code>
+touch.on('#target', 'touchstart touchmove touchend', function(ev){
+    console.log(ev.type);
+});
+</code>
+</pre>
+</div>
+    </div>
+    <script type="text/javascript" src="hijs.js"></script>
+    <script type="text/javascript" src="touch.min.js"></script>
+    <script type="text/javascript" src="examples.js"></script>
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Ffffba4526d43301ecb10cceaf968f17d' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</body>
+</html>

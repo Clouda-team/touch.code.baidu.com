@@ -1,0 +1,523 @@
+body, p, ul, li, h1, h2, h3, h4, h5,strong{ padding: 0; margin: 0; list-style-type: none }
+.main{
+  width: 980px;
+  min-width: 980px;
+  margin: 0 auto;
+  font-family: "微软雅黑", "Microsoft YaHei";
+  -webkit-user-select: none;
+}
+strong{
+  color: #444;
+  font-weight: bold;
+}
+.second{
+  color: #666;
+}
+.logo{
+  background: url(images/logo.png) no-repeat;
+  height: 59px;
+  overflow:hidden;
+}
+.logo p{
+  margin-left: 141px;
+  font-size: 16px;
+  color: #666;
+  margin-top: 24px;
+}
+.header .banner{
+  background: url(images/banner.png) no-repeat;
+  height: 217px;
+  width: 100%;
+  margin: 0 auto;
+  color: #fff;
+  overflow: hidde;
+  position: relative;
+}
+
+#pointer-list .qr{
+  margin-left: 38px;
+  margin-top: 36px;
+}
+
+.desc{
+  font-size: 16px;
+  padding-left: 24px;
+  padding-top: 16px;
+  width: 570px;
+}
+.desc>ul{
+  margin-top: 32px;
+  font-size: 14px;
+}
+.main .left{
+  min-height: 758px;
+  width: 206px;
+  background-color: #ddd;
+  margin: 0;
+  overflow: visible;
+  float: left;
+}
+
+#pointer-list li{
+  padding-left: 78px;
+  height: 62px;
+  line-height: 62px;
+  margin-top: 12px;
+  background-repeat: no-repeat;
+  position: relative;
+  background-image: url(images/pointers.png);
+  cursor: pointer;
+}
+
+#pointer-list #hover{
+  background-color: #666666;
+  color: #fff;
+}
+#pointer-list #hover span{
+  background:url(images/hover.png) no-repeat;
+  position: absolute;
+  width: 33px;
+  height: 62px;
+  right: -15px;
+  background-position: -191px center;
+}
+
+#pointer-list li.rotation{
+  background-position: 16px 0px;
+}
+#pointer-list li.scale{
+  background-position: 16px -76px;
+}
+#pointer-list li.tap{
+  background-position: 16px -151px;
+}
+#pointer-list li.swipe{
+  background-position: 16px -226px;
+}
+#pointer-list li.drag{
+  background-position: 16px -301px;
+}
+#pointer-list li.touch{
+  background-position: 16px -377px;
+}
+
+.main .right{
+   float: left;
+   background: url(images/pad.png) no-repeat;
+   width: 748px;
+   height: 460px;
+   margin-top: 12px;
+   margin-left: 24px;
+   position: relative;
+   -webkit-user-select: none;
+   border-radius: 10px;
+}
+
+
+.clear{
+  clear: both;
+}
+
+.right .demo{
+   display: none;
+   height: 390px;
+   margin: 30px;
+   width: 688px;
+   position: absolute;
+}
+
+.right [name="cur"]{
+   display: block;
+}
+
+.target{
+   width: 176px;
+   height: 166px;
+   background: url(images/yun.png) no-repeat;
+   margin-top: 12px;
+   margin-left: 12px;
+   cursor: pointer;
+}
+
+#rotation .target,
+#scale .target,
+#tap .target,
+#touch .target{
+   position: absolute;
+   left: 50%;
+   margin-left: -88px;
+   top: 45px;
+}
+
+#rotation .target{
+   -webkit-transform: rotate(30deg);
+}
+
+.swipe-demo{
+  margin-left: 400px;
+}
+
+.bold{
+  font-weight: bold;
+}
+.api-desc{
+   position: absolute;
+   top: 450px;
+   left: -30px;
+   right: -30px;
+   padding: 6px;
+   background: #f6f6f6;
+   border: 1px solid #999;
+   -webkit-user-select: text;
+}
+.api-desc a{
+   margin-right: 6px;
+   color: #176092;
+   cursor: pointer;
+   padding: 6px 3px 0 3px;
+}
+.api-desc a.selected{
+  border-bottom: 2px solid #5895f0;
+}
+
+@-webkit-keyframes transform { 
+    0% 	{ -webkit-transform: scale(0.5)}
+    55% 	{ -webkit-transform: scale(2)}
+    100% 		{ -webkit-transform: scale(1)}
+}
+
+.hold-ani{
+    -webkit-animation-name: transform;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+}
+
+.tabs li{
+   float: left;
+   padding: 0 12px;
+}
+
+.slide{
+   position: absolute;
+   width: 400px;
+   height: 44px;
+   top: 248px;
+   left: 50%;
+   margin-left: -200px;
+}
+
+.slide .v{
+   width: 44px;
+   background: blue;
+   background: -moz-radial-gradient(30% 30%, #fff, #707070);
+   background: -webkit-radial-gradient(30% 30%, #fff, #707070);
+   height: 100%;
+   position: absolute;
+   border-radius: 22px;
+   left: 192px;
+   text-align: center;
+   line-height: 41px;
+   color: #fff;
+   cursor: pointer;
+   border: 1px solid #d4d4d4;
+}
+
+.slide .h{
+   position: absolute;
+   width: 100%;
+   height: 2px;
+   top: 21px;
+   background: #a6a6a6;
+}
+
+#console{
+   height: 55px;
+   width: 676px;
+   position: absolute;
+   top: 351px;
+   margin-left: 30px;
+   background: #ccc;
+   border-top: 2px solid #999;
+   padding-left: 12px;
+   padding-top: 12px;
+   font-size: 12px;
+}
+#max-num{
+   position: absolute;
+   right: 0px;
+}
+
+.download{
+   background: url(images/download.png) no-repeat;
+   display: inline-block;
+   width: 124px;
+   height: 36px;
+   vertical-align: middle;
+   line-height: 36px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+
+.banner .b-r{
+  position: absolute;
+  top: 33px;
+  left: 642px;
+  right: 0px;
+}
+
+.banner .b-r>p{
+  margin-left: 76px;
+  font-size: 18px;
+}
+
+.banner .b-r ul{
+   margin-top: 24px;
+}
+
+.banner .b-r ul li{
+  margin-bottom: 14px;
+}
+#cdn-text{
+  margin-left: -78px;
+  width: 337px;
+  border: none;
+}
+#cdn-text:focus{
+  outline: none;
+}
+#cdn-btn{
+  background: #c9eef9;
+  border: 0px;
+  line-height: 20px;
+}
+
+.description{
+  width: 688px;
+  height: 37px;
+  position: absolute;
+  top: 303px;
+  font-size: 12px;
+  padding-left: 12px;
+  line-height: 30px;
+  display: none;
+}
+
+/*touch css*/
+.touch-main{
+  padding: 0 8px;
+}
+
+.touch-content .right{
+  border-top: 1px solid #999;
+  position:relative;
+  margin-top: 12px;
+}
+.touch-content .right .demo{
+  position:relative;
+  left: auto;
+  right: auto;
+  margin: 0;
+  height: 600px;
+  width: 100%;
+}
+
+.touch-content .right .description{
+  margin: 0;
+  padding: 0;
+  width: 98%;
+  padding: 0 1%;
+  top: 332px;
+  display: none;
+}
+
+.touch-content #console{
+  margin:0;
+  padding: 0;
+  width: 98%;
+  padding: 0 1%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  height: auto;
+}
+
+.touch-content .api-desc{
+  top: 414px;
+  margin: 0px;
+  padding: 0px;
+  left: 0px;
+  right: 0px;
+}
+.menu-btn{
+  float: right;
+  border: 1px solid #999;
+  border-radius: 3px;
+  line-height: 40px;
+  padding: 0 12px;
+  text-align: center;
+  margin-right: 12px;
+  background: -webkit-gradient(linear,0% 0%, 0% 100%, from(#fff), to(#F6F6F6))
+}
+.tools{
+  height: 40px;
+  position: relative;
+  margin-top: 8px;
+}
+.menu-btn .arrow{
+  display: inline-block;
+  border: 10px solid transparent;
+  border-top: 10px solid #666;
+  vertical-align: middle;
+  margin-top: 8px;
+}
+.menu-list .arrow{
+  position: absolute;
+  right: 20px;
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  width: 10px;
+  height: 10px;
+  -webkit-transform: rotate(-45deg);
+  top: -6px;
+  background: #fff;
+}
+.menu-list #pointer-list{
+  width: 160px;
+}
+.menu-list #pointer-list li{
+  background-color: #fff;
+  margin-top: 0;
+}
+.menu-list #pointer-list  #hover{
+  color: #fff;
+}
+.menu-list #pointer-list  #hover span{
+  display: none;
+}
+.menu-list{
+  z-index: 1000;
+  position: absolute;
+  right: 12px;
+  top: 50px;
+  border: 1px solid #999;
+}
+pre{
+ font-family: "微软雅黑", "Microsoft YaHei";
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+#touch .target{
+  -webkit-transition: top ease .3s;
+}
+#touch .target.shake{
+  top: 30px;
+}
+
+body>a>img{
+   display: none;
+}
+.contact{
+   padding: 20px 12px;
+   font-size: 12px;
+}
+.contact a{
+   display: block;
+   padding-left: 20px;
+   color: #176092;
+   background: url(images/email.png) no-repeat -5px -3px;
+}
+#pointer-list li.doc{
+   height: 40px;
+   margin: 0;
+   padding: 0;
+   line-height: 40px;
+   padding-left: 28px;
+   background: none;
+   
+}
+#pointer-list .doc#hover{
+   background: #2BA3E0;
+   border-bottom: 1px solid #0066CC;
+}
+#pointer-list .doc#hover span{
+   display: none;
+}
+#pointer-list li.doc+li{
+  margin-top:0;
+}
+#doc.right{
+  background: none;
+  display: none;
+  margin:0;
+  padding: 0;
+  width: 774px;
+  -webkit-user-select: text;
+}
+.g-nav{
+  height: 34px;
+  line-height: 34px;
+  background: #ddd;
+  border-bottom: 1px solid #666;
+}
+.g-nav li{
+  float: left;
+  padding: 0px 48px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.g-nav li#nav-cur{
+  background: #666;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.doc-nav{
+  height: 36px;
+  background: #ddd;
+  line-height: 30px;
+}
+
+.doc-nav li a{
+  padding: 3px 6px;
+}
+.doc-nav li a.cur{
+  background: #2BA3E0;
+  color: #fff;
+  border-radius: 3px;
+}
+.doc-nav li{
+  float: left;
+  margin-left: 24px;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+.changelog,
+.doc-api{
+  font-size: 14px;
+  min-height: 350px;
+}
+.setion-title{
+  background: #ddd;
+  line-height: 36px;
+  padding: 0 6px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.api-item{
+  border-radius: 5px;
+  margin-top: 12px;
+}
+.entry-wrapper{
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+.version{
+  margin-top: 12px;
+}
