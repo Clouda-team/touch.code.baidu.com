@@ -1,0 +1,21 @@
+{
+  "name": "touch.code.baidu.com",
+  "main": "touch.min.js",
+  "version": "0.2.14",
+  "homepage": "https://github.com/chinakids/touch.code.baidu.com",
+  "authors": [
+    "chinakids <494063570@qq.com>"
+  ],
+  "description": "touch.code.baidu.com",
+  "keywords": [
+    "touch"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
