@@ -241,6 +241,10 @@ var engine = {
                 utils.forceReflow();
             }
             e.originEvent = e;
+            
+            // 被绑定的dom对象
+            e.bindTarget = el;
+            
             for (var p in e.detail) {
                 if (p !== 'type') {
                     e[p] = e.detail[p];
