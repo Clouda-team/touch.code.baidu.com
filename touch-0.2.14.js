@@ -1,4 +1,4 @@
-/*! touchjs v0.2.14  2014-08-05 */
+/*! touchjs v0.2.14  2015-11-10 */
 'use strict';
 (function(root, factory) {
     if (typeof define === 'function' && (define.amd || define.cmd)) {
@@ -271,17 +271,17 @@ var engine = {
             var handlers = el.listeners[evt];
             if (handlers && handlers.length) {
                 handlers.forEach(function(handler) {
-                    el.removeEventListener(evt, handler, false);
-                });
+                    el.removeEventListener(evt, this.proxies[handler.proxy[evt]], false);
+                }, this);
             }
         } else {
             var proxyids = handler.proxy[evt];
             if (proxyids && proxyids.length) {
                 proxyids.forEach(function(proxyid) {
                     if (el.removeEventListener) {
-                        el.removeEventListener(evt, this.proxies[this.proxyid], false);
+                        el.removeEventListener(evt, this.proxies[proxyid], false);
                     }
-                });
+                }, this);
             }
         }
     },
@@ -354,9 +354,9 @@ var engine = {
             if (proxyids.length) {
                 proxyids.forEach(function(proxyid) {
                     if (el.removeEventListener) {
-                        el.removeEventListener(evt, this.proxies[this.proxyid], false);
+                        el.removeEventListener(evt, this.proxies[proxyid], false);
                     }
-                });
+                }, this);
             }
         }
     }
