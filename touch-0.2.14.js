@@ -131,25 +131,30 @@ utils.getDirectionFromAngle = function(agl) {
 };
 
 utils.getXYByElement = function(el) {
+    var boundingBox;
     var left = 0,
         top = 0;
 
-    while (el.offsetParent) {
-        left += el.offsetLeft;
-        top += el.offsetTop;
-        el = el.offsetParent;
-    }
+    boundingBox = el.getBoundingClientRect();
+    left = window.pageXOffset + boundingBox.left;
+    top = window.pageYOffset + boundingBox.top;
+
     return {
-        left: left,
-        top: top
+        "left": left,
+        "top": top
     };
 };
 
 utils.reset = function() {
     startEvent = moveEvent = endEvent = null;
-    __tapped = __touchStart = startSwiping = startPinch = false;
-    startDrag = false;
-    pos = {};
+    __tapped = __touchStart = startSwiping = startPinch = startDrag = false;
+
+    pos = {
+        start: null,
+        move: null,
+        end: null
+    };
+
     __rotation_single_finger = false;
 };
 
@@ -744,7 +749,10 @@ var handlerOriginEvent = function(ev) {
         case 'touchmove':
         case 'mousemove':
             if (!__touchStart || !pos.start) return;
+
+            moveEvent = ev;
             pos.move = utils.getPosOfEvent(ev);
+
             if (utils.getFingers(ev) >= 2) {
                 gestures.pinch(ev);
             } else if (__rotation_single_finger) {
@@ -758,6 +766,7 @@ var handlerOriginEvent = function(ev) {
         case 'mouseup':
         case 'mouseout':
             if (!__touchStart) return;
+
             endEvent = ev;
 
             if (startPinch) {
